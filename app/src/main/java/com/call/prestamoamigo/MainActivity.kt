@@ -20,16 +20,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             PrestamoAmigoTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
+
                     myApp()
                 }
             }
         }
     }
-}
+
 
 @Composable
 fun myApp() {
