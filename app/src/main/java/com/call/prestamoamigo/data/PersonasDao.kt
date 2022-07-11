@@ -1,8 +1,7 @@
 package com.call.prestamoamigo.data
 
 import androidx.room.*
-import com.call.prestamoamigo.model.Persona
-import com.call.prestamoamigo.model.Prestamo
+import com.call.prestamoamigo.model.Personas
 import kotlinx.coroutines.flow.Flow
 
 
@@ -10,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 interface PersonasDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun Insertar(persona: Persona)
+    suspend fun Insertar(persona: Personas)
 
     @Delete
-    suspend fun Eliminar(persona: Persona)
+    suspend fun Eliminar(persona: Personas)
 
 
     @Query(
@@ -23,7 +22,7 @@ interface PersonasDao {
         WHERE personaId=:personaId        
     """
     )
-    fun Buscar(personaId: Int): Flow<Persona>
+    fun Buscar(personaId: Int): Flow<Personas>
 
     @Query(
         """
@@ -32,6 +31,6 @@ interface PersonasDao {
         ORDER BY prestamoId    
     """
     )
-    fun GetLista(): Flow<List<Persona>>
+    fun GetLista(): Flow<List<Personas>>
 
 }
