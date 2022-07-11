@@ -4,10 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Personas")
-data class Persona(
+data class Personas(
     @PrimaryKey(autoGenerate = true)
     val personaId: Int,
+    val nombre: String,
     val telefono: String,
-    val email: String,
+    val correo: String,
     val direccion: String
 )
