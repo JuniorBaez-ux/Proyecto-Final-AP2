@@ -1,4 +1,4 @@
-package com.call.prestamoamigo.view
+package com.call.prestamoamigo.view.Pago
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.*
