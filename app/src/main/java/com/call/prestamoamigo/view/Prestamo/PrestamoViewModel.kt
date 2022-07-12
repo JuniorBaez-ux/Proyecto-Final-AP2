@@ -34,7 +34,7 @@ class PrestamoViewModel @Inject constructor(
                     concepto = concepto,
                     monto = monto.toFloat(),
                     vence = vence
-                )
+                 )
             )
         }
     }
