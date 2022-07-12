@@ -1,13 +1,11 @@
-package com.call.prestamoamigo.view
+package com.call.prestamoamigo.view.Prestamo
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.call.prestamoamigo.data.repository.PagosRepository
 import com.call.prestamoamigo.data.repository.PrestamosRepository
-import com.call.prestamoamigo.model.Pago
 import com.call.prestamoamigo.model.Prestamo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
