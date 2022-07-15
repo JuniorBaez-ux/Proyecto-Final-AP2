@@ -11,9 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 @Composable
-fun DashBoard (){
+fun DashBoard (navHostController: NavHostController){
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
     Scaffold(
