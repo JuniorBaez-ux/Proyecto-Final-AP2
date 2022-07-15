@@ -14,7 +14,7 @@ import androidx.navigation.NavHostController
 
 
 @Composable
-fun ConsultaPersonasScreen(
+fun ConsultaPrestamoScreen(
     navHostController: NavHostController,
     PrestamoViewModel: PrestamoViewModel = hiltViewModel()
 ){

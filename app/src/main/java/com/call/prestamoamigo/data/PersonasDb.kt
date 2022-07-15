@@ -2,10 +2,10 @@ package com.call.prestamoamigo.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.call.prestamoamigo.model.Personas
+import com.call.prestamoamigo.model.Persona
 
 @Database(
-    entities = [Personas::class],
+    entities = [Persona::class],
     version = 1
 )
 abstract class PersonasDb: RoomDatabase() {

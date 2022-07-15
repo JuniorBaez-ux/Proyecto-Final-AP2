@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.call.prestamoamigo.data.repository.PersonasRepository
-import com.call.prestamoamigo.model.Personas
+import com.call.prestamoamigo.model.Persona
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,7 +29,7 @@ class PersonaViewModel @Inject constructor(
     fun Guardar(){
         viewModelScope.launch {
             personasRepository.Insertar(
-                Personas(
+                Persona(
                     personaId = personaId,
                     telefono = telefono,
                     nombre = nombre,
