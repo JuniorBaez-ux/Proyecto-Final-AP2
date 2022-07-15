@@ -28,7 +28,7 @@ fun ConsultaPagoScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    navHostController.navigate("registroPago")
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {

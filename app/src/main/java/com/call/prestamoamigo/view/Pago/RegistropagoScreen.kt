@@ -28,7 +28,7 @@ fun RegistroPagoScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    navHostController.navigate("consultaPago")
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
@@ -41,6 +41,7 @@ fun RegistroPagoScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)) {
+
 
 
         }
