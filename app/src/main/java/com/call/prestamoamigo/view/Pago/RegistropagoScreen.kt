@@ -47,7 +47,7 @@ fun RegistroPagoScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text = "Registro de Pago") })
+            TopAppBar(title = { Text(text = "Registro de Pagos") })
         },
         floatingActionButton = {
             FloatingActionButton(
