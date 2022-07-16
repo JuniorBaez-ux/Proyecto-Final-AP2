@@ -78,6 +78,7 @@ fun RegistroPagoScreen(
                     onValueChange = {pagoViewModel.fecha = it},
                     modifier = Modifier.fillMaxWidth(),
                     label = { Text(text = "Fecha")},
+                    readOnly = true,
                     leadingIcon = {
                         IconButton(onClick = { date.show() }) {
                             Icon(imageVector = Icons.Default.CalendarToday, contentDescription = "Guardar")
@@ -131,8 +132,8 @@ fun RegistroPagoScreen(
                 }
             }
             TextField(
-                    value = "",
-            onValueChange = {},
+                    value = pagoViewModel.concepto,
+            onValueChange = {pagoViewModel.concepto = it},
             label = { Text(text = "Concepto") },
             modifier = Modifier
                 .fillMaxWidth()
@@ -145,8 +146,8 @@ fun RegistroPagoScreen(
             )
 
             TextField(
-                value = "",
-                onValueChange = {},
+                value = pagoViewModel.monto,
+                onValueChange = {pagoViewModel.monto = it},
                 label = { Text(text = "Monto") },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -157,7 +158,6 @@ fun RegistroPagoScreen(
                         contentDescription = null)
                 }
             )
-
         }
     }
 }
