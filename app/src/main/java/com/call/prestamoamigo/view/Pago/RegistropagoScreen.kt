@@ -1,16 +1,14 @@
 package com.call.prestamoamigo.view.Pago
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.widget.DatePicker
 import android.widget.Spinner
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.ExposedDropdownMenuDefaults.TrailingIcon
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.SaveAs
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -22,6 +20,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.call.prestamoamigo.MyApp
 import com.call.prestamoamigo.ui.theme.PrestamoAmigoTheme
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -31,6 +31,19 @@ fun RegistroPagoScreen(
 
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
+    val contexto = LocalContext.current
+
+    val calendar = Calendar.getInstance()
+    val year = calendar.get(Calendar.YEAR)
+    val month = calendar.get(Calendar.MONTH)
+    val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+    val date = DatePickerDialog(
+        contexto, {d, year, month, day->
+        val month = month + 1
+            pagoViewModel.fecha = "$day / $month / $year"
+        },year, month, day
+    )
 
     Scaffold(
         topBar = {
@@ -39,6 +52,7 @@ fun RegistroPagoScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
+                    pagoViewModel.Guardar()
                     navHostController.navigate("consultaPago")
                 },
                 backgroundColor = MaterialTheme.colors.primary
@@ -55,12 +69,21 @@ fun RegistroPagoScreen(
                 .padding(8.dp)
         ) {
 
-            Row(modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)) {
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 5.dp)) {
+
                 TextField(
-                    value = "",
-                    onValueChange = {},
+                    value = pagoViewModel.fecha,
+                    onValueChange = {pagoViewModel.fecha = it},
                     modifier = Modifier.fillMaxWidth(),
-                    label = { Text(text = "Fecha")}
+                    label = { Text(text = "Fecha")},
+                    leadingIcon = {
+                        IconButton(onClick = { date.show() }) {
+                            Icon(imageVector = Icons.Default.CalendarToday, contentDescription = "Guardar")
+                        }
+                    }
+
                 )
             }
 
@@ -81,7 +104,12 @@ fun RegistroPagoScreen(
                         )
                     },
                     colors = ExposedDropdownMenuDefaults.textFieldColors(),
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 5.dp),
+                    leadingIcon = {
+                        Icon(imageVector = Icons.Default.MoneyOff, contentDescription = "Guardar")
+                    }
                 )
 
                 ExposedDropdownMenu(
@@ -106,20 +134,31 @@ fun RegistroPagoScreen(
                     value = "",
             onValueChange = {},
             label = { Text(text = "Concepto") },
-            modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 5.dp),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Description,
+                        contentDescription = null)
+                }
             )
 
             TextField(
                 value = "",
                 onValueChange = {},
                 label = { Text(text = "Monto") },
-                modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 5.dp),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Money,
+                        contentDescription = null)
+                }
             )
+
         }
-
-
-
-
     }
 }
 

@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 fun MyApp() {
     val navHostController = rememberNavController()
 
-    NavHost(navController = navHostController, startDestination = "ConsultaPersonas"){
+    NavHost(navController = navHostController, startDestination = "Consultapago"){
         composable("ConsultaPersonas"){
             ConsultaPersonasScreen(navHostController = navHostController)
         }
