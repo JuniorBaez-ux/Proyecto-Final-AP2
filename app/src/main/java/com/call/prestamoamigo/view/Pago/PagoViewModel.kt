@@ -22,6 +22,10 @@ class PagoViewModel @Inject constructor(
     var pagos = pagosRepository.GetLista()
         private set
 
+    val options = listOf("hola", "saludo", "carlos")
+    var expanded by mutableStateOf(false)
+    var selectedOptionText by mutableStateOf(options[0])
+
     fun Guardar(){
         viewModelScope.launch {
             pagosRepository.Insertar(
