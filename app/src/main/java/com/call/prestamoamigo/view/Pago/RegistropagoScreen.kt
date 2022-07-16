@@ -55,17 +55,19 @@ fun RegistroPagoScreen(
                 .padding(8.dp)
         ) {
 
-            Row(modifier = Modifier.fillMaxWidth()) {
+            Row(modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)) {
                 TextField(
                     value = "",
                     onValueChange = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text(text = "Fecha")}
                 )
             }
 
             ExposedDropdownMenuBox(
                 expanded = pagoViewModel.expanded,
                 onExpandedChange = {
+                    pagoViewModel.expanded = it
                 },
             ) {
                 TextField(
@@ -78,7 +80,8 @@ fun RegistroPagoScreen(
                             expanded = pagoViewModel.expanded
                         )
                     },
-                    colors = ExposedDropdownMenuDefaults.textFieldColors()
+                    colors = ExposedDropdownMenuDefaults.textFieldColors(),
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)
                 )
 
                 ExposedDropdownMenu(
@@ -99,21 +102,22 @@ fun RegistroPagoScreen(
                     }
                 }
             }
-        }
-
-        TextField(
-            value = "",
+            TextField(
+                    value = "",
             onValueChange = {},
             label = { Text(text = "Concepto") },
-            modifier = Modifier.fillMaxWidth()
-        )
+            modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)
+            )
 
-        TextField(
-            value = "",
-            onValueChange = {},
-            label = { Text(text = "Monto") },
-            modifier = Modifier.fillMaxWidth()
-        )
+            TextField(
+                value = "",
+                onValueChange = {},
+                label = { Text(text = "Monto") },
+                modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)
+            )
+        }
+
+
 
 
     }
