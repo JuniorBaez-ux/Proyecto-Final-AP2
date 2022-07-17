@@ -1,6 +1,7 @@
 package com.call.prestamoamigo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,9 +11,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.call.prestamoamigo.ui.components.prestamo.RegistroPrestamoSceen
 import com.call.prestamoamigo.ui.theme.PrestamoAmigoTheme
 import com.call.prestamoamigo.view.Dashboard.DashBoard
@@ -48,7 +51,11 @@ fun MyApp() {
         composable("RegistroPersonas"){
             RegistroPersonasScreen(navHostController = navHostController)
         }
-        composable("DashBoard"){
+        composable("DashBoard/{id}",
+            arguments = listOf(navArgument(name = "id"){
+                type = NavType.IntType
+            })){
+            Log.d("Args", it.arguments?.getInt("id").toString())
             DashBoard(navHostController = navHostController)
         }
         composable("RegistroPrestamo"){
