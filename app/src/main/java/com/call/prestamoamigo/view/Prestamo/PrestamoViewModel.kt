@@ -20,9 +20,12 @@ class PrestamoViewModel @Inject constructor(
     var concepto by mutableStateOf("")
     var monto by mutableStateOf("")
     var vence by mutableStateOf("")
+    var balance by mutableStateOf(0)
+
 
     var prestamos = prestamosRepository.GetLista()
         private set
+    var expanded by mutableStateOf(false)
 
     fun Guardar(){
         viewModelScope.launch {
@@ -32,8 +35,9 @@ class PrestamoViewModel @Inject constructor(
                     fecha = fecha,
                     personaId = 0,
                     concepto = concepto,
-                    monto = monto.toFloat(),
-                    vence = vence
+                    monto = monto.toString().toFloat(),
+                    vence = vence,
+                    balance = monto.toString().toDouble(),
                  )
             )
         }
