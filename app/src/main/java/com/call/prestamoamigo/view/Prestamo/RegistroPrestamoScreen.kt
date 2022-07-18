@@ -148,11 +148,11 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                     )
             OutlinedButton(
                 onClick = {
-                    //if (validateFecha(PrestamoViewModel.concepto) || validateFecha(PrestamoViewModel.fecha)) {
-                       // if(validateNum(PrestamoViewModel.monto)){
+                    if (validateCadena(PrestamoViewModel.concepto) || validateCadena(PrestamoViewModel.fecha)) {
+                        if(validateNum(PrestamoViewModel.monto)){
                             PrestamoViewModel.Guardar()
                             navHostController.navigate("ConsultaPrestamo")
-                        //}
+                        }
 
                     /*if (PrestamoViewModel.vence.isNullOrEmpty()) {
 
@@ -170,8 +170,8 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                             .show()
                         Monto.requestFocus()
                         return@OutlinedButton*/
-                    //}else{
-                    //    Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show() }
+                    }else{
+                        Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show() }
         },
         modifier = Modifier.align(alignment = Alignment.CenterHorizontally).padding(6.dp)
             ) {
@@ -180,8 +180,8 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
         }
     }
 }
-/*
-fun validateFecha(cadena: String): Boolean {
+
+fun validateCadena(cadena: String): Boolean {
 
     val validate = String.toString()
     if(validate.isNullOrEmpty()){
@@ -201,7 +201,7 @@ fun validateNum(num: String): Boolean {
         return false
     }
 }
-*/
+
 
 
 
