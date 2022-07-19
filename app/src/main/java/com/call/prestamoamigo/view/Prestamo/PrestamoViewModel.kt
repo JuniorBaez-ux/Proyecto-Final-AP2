@@ -13,7 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PrestamoViewModel @Inject constructor(
-    val prestamosRepository: PrestamosRepository
+    val prestamosRepository: PrestamosRepository,
+
 ): ViewModel(){
 
     var fecha by mutableStateOf("")
@@ -21,7 +22,7 @@ class PrestamoViewModel @Inject constructor(
     var monto by mutableStateOf("")
     var vence by mutableStateOf("")
     var balance by mutableStateOf(0)
-
+    var personaIdentification by mutableStateOf(0)
 
     var prestamos = prestamosRepository.GetLista()
         private set
@@ -33,7 +34,7 @@ class PrestamoViewModel @Inject constructor(
                 Prestamo(
                     prestamoId = 0,
                     fecha = fecha,
-                    personaId = 0,
+                    personaId = personaIdentification.toInt(),
                     concepto = concepto,
                     monto = monto.toString().toFloat(),
                     vence = vence,
