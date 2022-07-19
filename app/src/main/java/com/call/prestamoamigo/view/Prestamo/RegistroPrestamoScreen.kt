@@ -1,17 +1,14 @@
 package com.call.prestamoamigo.ui.components.prestamo
 
 import android.app.DatePickerDialog
-import android.view.View
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.twotone.Save
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,19 +18,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.semantics.SemanticsActions.OnClick
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.call.prestamoamigo.ui.theme.backgroundColor
 import com.call.prestamoamigo.view.Prestamo.PrestamoViewModel
 import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
-import javax.xml.validation.Validator
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -149,29 +140,19 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                     )
             OutlinedButton(
                 onClick = {
-                    if (validateCadena(PrestamoViewModel.concepto) || validateCadena(PrestamoViewModel.fecha)) {
-                        if(validateNum(PrestamoViewModel.monto)){
-                            PrestamoViewModel.personaIdentification = personaIdentification;
-                            PrestamoViewModel.Guardar()
-                            navHostController.navigate("ConsultaPrestamo/$personaIdentification")
-                        }
+                    if(validateCadena(PrestamoViewModel.concepto) && validateCadena(PrestamoViewModel.fecha) &&
+                         validateCadena(PrestamoViewModel.vence) && PrestamoViewModel.monto.length> 2  ) {
+                        //if(validateNum(PrestamoViewModel.monto)){
+                            if(valida(PrestamoViewModel.monto) == false){
+                                //Toast.makeText(context, "Usted Supo poner un numero Leon", Toast.LENGTH_SHORT).show()
+                                PrestamoViewModel.personaIdentification = personaIdentification;
+                                PrestamoViewModel.Guardar()
+                            }
+                            //else{
 
-                    /*if (PrestamoViewModel.vence.isNullOrEmpty()) {
+                           // navHostController.navigate("ConsultaPrestamo/$personaIdentification")
+                        //}
 
-                        Toast.makeText(context, "La fecha Vence está vacio!", Toast.LENGTH_LONG).show()
-                        Vence.requestFocus()
-                        return@OutlinedButton
-                    }*/
-                   // if (PrestamoViewModel.concepto.isNullOrEmpty()) {
-                    //    Toast.makeText(context, "El campo Concepto está vacio", Toast.LENGTH_LONG).show()
-                      //  Concepto.requestFocus()
-                        //return@OutlinedButton
-                    //}
-                    /*if (PrestamoViewModel.monto.toFloat() <= 0) {
-                        Toast.makeText(context, "El Monto debe ser mayor que cero!", Toast.LENGTH_LONG)
-                            .show()
-                        Monto.requestFocus()
-                        return@OutlinedButton*/
                     }else{
                         Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show() }
         },
@@ -185,23 +166,18 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
 
 fun validateCadena(cadena: String): Boolean {
 
-    val validate = String.toString()
-    if(validate.isNullOrEmpty()){
-        return true
+    if(cadena.isNullOrEmpty()){
+        return false
     }
     else{
-        return false
+        return true
     }
 }
-fun validateNum(num: String): Boolean {
 
-    val valida = Double
-    if(valida.POSITIVE_INFINITY > 0 && valida.MIN_VALUE > 0){
-        return true
-    }
-    else{
-        return false
-    }
+fun valida(num: String): Boolean {
+    var patron = Regex(pattern = " (^0{2,})")
+
+    return patron.matches(num)
 }
 
 
