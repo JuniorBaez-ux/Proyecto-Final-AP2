@@ -149,7 +149,6 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                                 PrestamoViewModel.Guardar()
                             }
                             //else{
-
                            // navHostController.navigate("ConsultaPrestamo/$personaIdentification")
                         //}
 
