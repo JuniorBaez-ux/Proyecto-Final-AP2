@@ -11,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,6 +24,7 @@ import com.call.prestamoamigo.view.Pago.ConsultaPagoScreen
 import com.call.prestamoamigo.view.Pago.RegistroPagoScreen
 import com.call.prestamoamigo.view.Persona.ConsultaPersonasScreen
 import com.call.prestamoamigo.view.Prestamo.ConsultaPrestamoScreen
+import com.call.prestamoamigo.view.Prestamo.PrestamoViewModel
 import com.example.p1_ap2_junior_20190009.ui.Prestamo.RegistroPersonasScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,14 +57,26 @@ fun MyApp() {
             arguments = listOf(navArgument(name = "id"){
                 type = NavType.IntType
             })){
+            val personaIdentification = it.arguments?.getInt("id").toString()
             Log.d("Args", it.arguments?.getInt("id").toString())
-            DashBoard(navHostController = navHostController)
+            DashBoard(navHostController = navHostController, personaIdentification.toInt())
+
         }
-        composable("RegistroPrestamo"){
-            RegistroPrestamoSceen(navHostController = navHostController)
+        composable("RegistroPrestamo/{id}",
+            arguments = listOf(navArgument(name = "id"){
+                type = NavType.IntType
+            })){
+            val personaIdentification = it.arguments?.getInt("id").toString()
+            Log.d("Args", it.arguments?.getInt("id").toString())
+            RegistroPrestamoSceen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt())
         }
-        composable("ConsultaPrestamo"){
-            ConsultaPrestamoScreen(navHostController = navHostController)
+        composable("ConsultaPrestamo/{id}",
+            arguments = listOf(navArgument(name = "id"){
+                type = NavType.IntType
+            })){
+            val personaIdentification = it.arguments?.getInt("id").toString()
+            Log.d("Args", it.arguments?.getInt("id").toString())
+            ConsultaPrestamoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt())
         }
         composable("Consultapago"){
             ConsultaPagoScreen(navHostController = navHostController)
