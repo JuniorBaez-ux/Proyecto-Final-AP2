@@ -141,15 +141,18 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
             OutlinedButton(
                 onClick = {
                     if(validateCadena(PrestamoViewModel.concepto) && validateCadena(PrestamoViewModel.fecha) &&
-                         validateCadena(PrestamoViewModel.vence) && PrestamoViewModel.monto.length> 2  ) {
+                         validateCadena(PrestamoViewModel.vence) //&& PrestamoViewModel.monto.length> 2
+                        ) {
+                        //if(PrestamoViewModel.monto.length > 1){
                         //if(validateNum(PrestamoViewModel.monto)){
-                            if(valida(PrestamoViewModel.monto) == false){
+                            //if(valida(PrestamoViewModel.monto) == false){
                                 //Toast.makeText(context, "Usted Supo poner un numero Leon", Toast.LENGTH_SHORT).show()
                                 PrestamoViewModel.personaIdentification = personaIdentification;
                                 PrestamoViewModel.Guardar()
-                            }
+                            navHostController.navigate("ConsultaPrestamo/$personaIdentification")
+                           // }
                             //else{
-                           // navHostController.navigate("ConsultaPrestamo/$personaIdentification")
+                           //
                         //}
 
                     }else{
