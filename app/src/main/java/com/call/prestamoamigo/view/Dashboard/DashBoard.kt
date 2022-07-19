@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
 @Composable
-fun DashBoard (navHostController: NavHostController){
+fun DashBoard (navHostController: NavHostController,personaIdentification: Int ){
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
     Scaffold(
@@ -37,7 +37,7 @@ fun DashBoard (navHostController: NavHostController){
                     ){
 
             }
-            Button(onClick = {  },
+            Button(onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
                 modifier = Modifier
                 .fillMaxWidth()) {
                Text(text = "Pretamo")
