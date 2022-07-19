@@ -36,7 +36,7 @@ class PrestamoViewModel @Inject constructor(
                     fecha = fecha,
                     personaId = personaIdentification.toInt(),
                     concepto = concepto,
-                    monto = monto.toString().toFloat(),
+                    monto = monto.toString().toDouble(),
                     vence = vence,
                     balance = monto.toString().toDouble(),
                  )
