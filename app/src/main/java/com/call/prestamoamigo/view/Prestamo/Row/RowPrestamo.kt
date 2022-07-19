@@ -17,7 +17,8 @@ import com.call.prestamoamigo.model.Prestamo
 
 
 @Composable
-fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController) {
+fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
+                 personaIdentification: Int) {
     Column(modifier = Modifier
         .fillMaxWidth()
         .padding(6.dp)
@@ -25,9 +26,9 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController) {
         {
         Card(modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .height(80.dp)
             .clickable {
-                navHostController.navigate("RegistroPrestamo")
+                navHostController.navigate("RegistroPrestamo/$personaIdentification")
             }){
             Row(
                 modifier = Modifier
@@ -39,7 +40,8 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController) {
 
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth().padding(2.dp)
+                        .fillMaxWidth()
+                        .padding(2.dp)
 
                 ) {
                     Row(
