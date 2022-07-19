@@ -22,7 +22,8 @@ import com.call.prestamoamigo.view.Prestamo.Row.RowPrestamo
 @Composable
 fun ConsultaPrestamoScreen(
     navHostController: NavHostController,
-    PrestamoViewModel: PrestamoViewModel = hiltViewModel()
+    PrestamoViewModel: PrestamoViewModel = hiltViewModel(),
+    personaIdentification: Int
 ){
     val listaPrestamo = PrestamoViewModel.prestamos.collectAsState(initial = emptyList())
     val ScaffoldState = rememberScaffoldState()
@@ -34,7 +35,7 @@ fun ConsultaPrestamoScreen(
         },
         floatingActionButton = {
             FloatingActionButton(onClick = {
-                navHostController.navigate("RegistroPrestamo")
+                navHostController.navigate("RegistroPrestamo/$personaIdentification")
             }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
             }
