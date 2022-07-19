@@ -10,7 +10,7 @@ data class Prestamo(
     val concepto: String,
     val fecha: String,
     val vence: String,
-    val monto: Float = 0.0f,
+    val monto: Double ,
     val balance: Double,
     val personaId: Int
 
