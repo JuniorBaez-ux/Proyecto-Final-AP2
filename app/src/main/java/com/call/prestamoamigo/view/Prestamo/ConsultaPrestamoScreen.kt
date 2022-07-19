@@ -51,7 +51,7 @@ fun ConsultaPrestamoScreen(
         ) {
             LazyColumn(modifier = Modifier.fillMaxSize()){
                 items(listaPrestamo.value){ prestamo ->
-                    RowPrestamo(prestamo = prestamo, navHostController = navHostController)
+                    RowPrestamo(prestamo = prestamo, navHostController = navHostController, personaIdentification)
                     Spacer(modifier = Modifier.height(5.dp))
                     Divider(
                         modifier = Modifier
