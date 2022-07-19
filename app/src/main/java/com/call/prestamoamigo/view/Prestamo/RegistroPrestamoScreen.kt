@@ -38,7 +38,8 @@ import javax.xml.validation.Validator
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun RegistroPrestamoSceen(navHostController: NavHostController,
-                          PrestamoViewModel: PrestamoViewModel = hiltViewModel()
+                          PrestamoViewModel: PrestamoViewModel = hiltViewModel(),
+                          personaIdentification: Int
 ){
     val context = LocalContext.current
     val contexto = LocalContext.current
@@ -150,8 +151,9 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                 onClick = {
                     if (validateCadena(PrestamoViewModel.concepto) || validateCadena(PrestamoViewModel.fecha)) {
                         if(validateNum(PrestamoViewModel.monto)){
+                            PrestamoViewModel.personaIdentification = personaIdentification;
                             PrestamoViewModel.Guardar()
-                            navHostController.navigate("ConsultaPrestamo")
+                            navHostController.navigate("ConsultaPrestamo/$personaIdentification")
                         }
 
                     /*if (PrestamoViewModel.vence.isNullOrEmpty()) {
