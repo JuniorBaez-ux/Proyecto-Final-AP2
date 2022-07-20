@@ -21,35 +21,11 @@ object  AppModule {
 
     @Singleton
     @Provides
-    fun ProvideTicketDb(@ApplicationContext context: Context): PrestamosDb {
+    fun ProvideTicketDb(@ApplicationContext context: Context): PrestamosAmigosDb {
         val DATABASE_NAME = "PrestamoDb"
         return Room.databaseBuilder(
             context,
-            PrestamosDb::class.java,
-            DATABASE_NAME       )
-            .fallbackToDestructiveMigration()
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun ProvidePersonaDb(@ApplicationContext context: Context): PersonasDb {
-        val DATABASE_NAME = "PersonaDb"
-        return Room.databaseBuilder(
-            context,
-            PersonasDb::class.java,
-            DATABASE_NAME       )
-            .fallbackToDestructiveMigration()
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun ProvidePagoDb(@ApplicationContext context: Context): PagosDb {
-        val DATABASE_NAME = "PagoDb"
-        return Room.databaseBuilder(
-            context,
-            PagosDb::class.java,
+            PrestamosAmigosDb::class.java,
             DATABASE_NAME       )
             .fallbackToDestructiveMigration()
             .build()
@@ -57,7 +33,7 @@ object  AppModule {
 
 
     @Provides
-    fun ProvidePrestamoDAO(prestamosDb: PrestamosDb): PrestamosDao {
+    fun ProvidePrestamoDAO(prestamosDb: PrestamosAmigosDb): PrestamosDao {
         return prestamosDb.prestamosDao
     }
 
@@ -67,7 +43,7 @@ object  AppModule {
     }
 
     @Provides
-    fun ProvidePersonaDAO(personasDb: PersonasDb): PersonasDao {
+    fun ProvidePersonaDAO(personasDb: PrestamosAmigosDb): PersonasDao {
         return personasDb.personaDao
     }
 
@@ -77,7 +53,7 @@ object  AppModule {
     }
 
     @Provides
-    fun ProvidePagoDAO(pagosDb: PagosDb): PagosDao {
+    fun ProvidePagoDAO(pagosDb: PrestamosAmigosDb): PagosDao {
         return pagosDb.pagosDao
     }
 
