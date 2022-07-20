@@ -68,7 +68,7 @@ fun pagoItem(pago: Pago, onClick : (Pago)->Unit){
     ) {
         Card(modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp)
+            .height(80.dp).padding(vertical = 5.dp)
             .clickable { onClick(pago) }) {
             Row(
                 modifier = Modifier
@@ -85,6 +85,7 @@ fun pagoItem(pago: Pago, onClick : (Pago)->Unit){
                 ) {
 
                     Text(
+                        modifier = Modifier.padding(vertical = 5.dp),
                         text = "${pago.concepto}",
                         style = MaterialTheme.typography.body1,
                         fontFamily = FontFamily.Monospace,
