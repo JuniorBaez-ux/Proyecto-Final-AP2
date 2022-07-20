@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.call.prestamoamigo.model.Prestamo
@@ -18,15 +19,16 @@ import com.call.prestamoamigo.model.Prestamo
 
 @Composable
 fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
-                 personaIdentification: Int) {
+                 personaIdentification: Int)
+{
+
     Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(6.dp)
+        .fillMaxWidth().padding(1.dp)
         .background(color = Color(0xFF82D4BB)))
         {
         Card(modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp)
+            .height(80.dp).padding(vertical = 5.dp)
             .clickable {
                 navHostController.navigate("RegistroPrestamo/$personaIdentification")
             }){
@@ -39,31 +41,40 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
                 ) {
 
                 Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(2.dp)
+                    modifier = Modifier.fillMaxWidth().padding(2.dp)
 
                 ) {
                     Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ){
+                        modifier = Modifier.fillMaxWidth().padding(),
+                        horizontalArrangement = Arrangement.SpaceBetween)
+                    {
                     Text(
-                        text = "${prestamo.concepto}",
-                    )
-                        Text("$${prestamo.monto}")
-                }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
 
-                        ) {
-                        Text("${prestamo.fecha}",)
-                        Text("$ ${prestamo.balance}",)
+                        modifier = Modifier.padding(vertical = 5.dp),
+                        text = "${prestamo.concepto}",
+                        style = MaterialTheme.typography.body1,
+                        overflow = TextOverflow.Ellipsis,
+                        color = Color.Black,
+                        )
+
+                        Text("$${prestamo.monto}",
+                        style = MaterialTheme.typography.body1,
+                        overflow = TextOverflow.Ellipsis,
+                        color = Color.Black)
+                     }
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(),
+                        horizontalArrangement = Arrangement.SpaceBetween,)
+                    {
+                        Text("${prestamo.fecha}",
+                            style = MaterialTheme.typography.body1,
+                            overflow = TextOverflow.Ellipsis,
+                            color = Color.Black)
+
+                        Text("$ ${prestamo.balance}",
+                                style = MaterialTheme.typography.body1,
+                                overflow = TextOverflow.Ellipsis,
+                                color = Color.Black)
                     }
                 }
             }
