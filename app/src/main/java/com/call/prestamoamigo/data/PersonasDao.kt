@@ -32,5 +32,15 @@ interface PersonasDao {
     """
     )
     fun GetLista(): Flow<List<Persona>>
+/*
+    @Query(
+        """
+        SELECT balance 
+        FROM Prestamos
+        WHERE personaId = personaId
+    """
+    )
+    fun GetMontoFromPrestamos(personaId:Int): Double*/
 
+    //SELECT fecha FROM Pagos WHERE
 }

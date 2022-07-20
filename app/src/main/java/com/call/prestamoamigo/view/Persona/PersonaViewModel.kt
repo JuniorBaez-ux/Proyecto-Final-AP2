@@ -20,11 +20,14 @@ class PersonaViewModel @Inject constructor(
 
     var personas = personasRepository.GetLista()
 
+
     var personaId by mutableStateOf(0)
     var nombre by mutableStateOf("")
     var telefono by mutableStateOf("")
     var correo by mutableStateOf("")
     var direccion by mutableStateOf("")
+    var prestamosTotales by mutableStateOf(0)
+
 
     fun Guardar(){
         viewModelScope.launch {
@@ -34,9 +37,14 @@ class PersonaViewModel @Inject constructor(
                     telefono = telefono,
                     nombre = nombre,
                     correo = correo,
-                    direccion = direccion
+                    direccion = direccion,
+                    prestamosTotales = prestamosTotales
                 )
             )
         }
     }
+
+   /* fun getMontoFromPrestamos(personaID: Int): Double {
+        return personasRepository.GetMontoFromPrestamos(personaID)
+    }*/
 }

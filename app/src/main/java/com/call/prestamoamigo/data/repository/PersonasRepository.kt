@@ -16,4 +16,6 @@ class PersonasRepository @Inject constructor(
     suspend fun Eliminar(personas: Persona)= personasDao.Eliminar(personas)
 
     fun GetLista(): Flow<List<Persona>> = personasDao.GetLista()
+
+    /*fun GetMontoFromPrestamos(personaId: Int): Double = personasDao.GetMontoFromPrestamos(personaId)*/
 }
