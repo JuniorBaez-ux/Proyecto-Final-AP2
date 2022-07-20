@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.SaveAs
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -36,9 +37,10 @@ fun ConsultaPagoScreen(
                 onClick = {
                     navHostController.navigate("registroPago")
                 },
-                backgroundColor = MaterialTheme.colors.primary
+                backgroundColor = MaterialTheme.colors.secondary
             ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Guardar")
+                Icon(imageVector = Icons.Default.Add, contentDescription = null, )
+
             }
         },
         scaffoldState = ScaffoldState
