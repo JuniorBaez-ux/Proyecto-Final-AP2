@@ -32,7 +32,7 @@ fun DashBoard (navHostController: NavHostController,personaIdentification: Int )
             Card (
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(70.dp)
+                    .height(100.dp)
 
                     ){
 
