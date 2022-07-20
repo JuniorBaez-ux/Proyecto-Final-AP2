@@ -1,6 +1,7 @@
 package com.call.prestamoamigo.ui.components.prestamo
 
 import android.app.DatePickerDialog
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -68,6 +70,7 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
 
         Column(modifier = Modifier.padding(8.dp)) {
 
+
                 OutlinedTextField(
                     value = PrestamoViewModel.fecha,
                     onValueChange = { PrestamoViewModel.fecha = it },
@@ -77,13 +80,15 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                     },
                     readOnly = true,
                     leadingIcon = {
+                        Icon(
+                        imageVector = Icons.Default.CalendarToday,
+                        contentDescription = null
+                    )
                         IconButton(onClick = { date.show() }) {
-                            Icon(
-                                imageVector = Icons.Default.CalendarToday,
-                                contentDescription = null
-                            )
+
                         }
                     }
+
                 )
 
                 OutlinedTextField(
@@ -141,26 +146,23 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
             OutlinedButton(
                 onClick = {
                     if(validateCadena(PrestamoViewModel.concepto) && validateCadena(PrestamoViewModel.fecha) &&
-                         validateCadena(PrestamoViewModel.vence) //&& PrestamoViewModel.monto.length> 2
+                         validateCadena(PrestamoViewModel.vence) && PrestamoViewModel.monto.length> 2
                         ) {
-                        //if(PrestamoViewModel.monto.length > 1){
-                        //if(validateNum(PrestamoViewModel.monto)){
-                            //if(valida(PrestamoViewModel.monto) == false){
-                                //Toast.makeText(context, "Usted Supo poner un numero Leon", Toast.LENGTH_SHORT).show()
+                            if(valida(PrestamoViewModel.monto)){
+                                Toast.makeText(context, "No sabes escribir", Toast.LENGTH_SHORT).show()
+                            }
+                            else{
+                                Toast.makeText(context, "Usted Sabe escribir", Toast.LENGTH_SHORT).show()
                                 PrestamoViewModel.personaIdentification = personaIdentification;
                                 PrestamoViewModel.Guardar()
-                            navHostController.navigate("ConsultaPrestamo/$personaIdentification")
-                           // }
-                            //else{
-                           //
-                        //}
-
+                                navHostController.navigate("ConsultaPrestamo/$personaIdentification")
+                            }
                     }else{
                         Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show() }
         },
         modifier = Modifier.align(alignment = Alignment.CenterHorizontally).padding(6.dp)
             ) {
-                Text("Guardar ")
+                Text("Guardar ", color = Color.Black)
             }
         }
     }
@@ -177,9 +179,10 @@ fun validateCadena(cadena: String): Boolean {
 }
 
 fun valida(num: String): Boolean {
-    var patron = Regex(pattern = " (^0{2,})")
-
-    return patron.matches(num)
+    var patron =  "(^0)".toRegex()
+    var result = patron.containsMatchIn(num)
+    Log.d(result.toString(), "Tenemo to")
+    return result
 }
 
 
