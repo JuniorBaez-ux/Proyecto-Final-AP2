@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PagoViewModel @Inject constructor(
     val pagosRepository: PagosRepository,
-    val prestamosRepository: PrestamosRepository
+    val prestamosRepository: PrestamosRepository,
 ): ViewModel(){
     var fecha by mutableStateOf("")
     var concepto by mutableStateOf("")
@@ -32,10 +32,11 @@ class PagoViewModel @Inject constructor(
     var prestamos = prestamosRepository.GetLista()
         private set
 
-    val options = listOf("${prestamos}")
+    val options = listOf("")
 
     var expanded by mutableStateOf(false)
-    var selectedOptionText by mutableStateOf(options[0])
+    var selectedPrestamo by mutableStateOf(options[0])
+    var selectId by mutableStateOf(0)
 
     fun Guardar(){
         viewModelScope.launch {
@@ -43,7 +44,7 @@ class PagoViewModel @Inject constructor(
                 Pago(
                     pagoId = 0,
                     fecha = fecha,
-                    prestamoId = 0,
+                    prestamoId = selectId.toInt(),
                     concepto = concepto,
                     monto = monto.toFloat()
                 )

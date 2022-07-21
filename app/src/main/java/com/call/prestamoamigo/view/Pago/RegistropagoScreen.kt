@@ -10,6 +10,7 @@ import androidx.compose.material.ExposedDropdownMenuDefaults.TrailingIcon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -96,8 +97,8 @@ fun RegistroPagoScreen(
             ) {
                 TextField(
                     readOnly = true,
-                    value = pagoViewModel.selectedOptionText,
-                    onValueChange = { pagoViewModel.selectedOptionText = it },
+                    value = pagoViewModel.selectedPrestamo,
+                    onValueChange = { pagoViewModel.selectedPrestamo = it },
                     label = { Text(text = "Prestamo") },
                     trailingIcon = {
                         ExposedDropdownMenuDefaults.TrailingIcon(
@@ -119,14 +120,18 @@ fun RegistroPagoScreen(
                         pagoViewModel.expanded = false
                     }
                 ) {
-                    pagoViewModel.options.forEach { selectPrestamos ->
+
+                    val lista = pagoViewModel.prestamos.collectAsState(initial = emptyList())
+
+                    lista.value.forEach() { selectPrestamos ->
                         DropdownMenuItem(
                             onClick = {
-                                pagoViewModel.selectedOptionText = selectPrestamos
+                                pagoViewModel.selectedPrestamo = selectPrestamos.concepto
+                                pagoViewModel.selectId = selectPrestamos.prestamoId
                                 pagoViewModel.expanded = false
                             }
                         ) {
-                            Text(text = selectPrestamos)
+                            Text(text = selectPrestamos.concepto)
                         }
                     }
                 }
