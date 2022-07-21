@@ -106,7 +106,7 @@ fun MyApp() {
             Log.d("Prestamos totales de la persona", it.arguments?.getInt("id").toString())
             ConsultaPrestamoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt(), prestamosTotalesDelCliente.toInt())
         }
-        composable("Consultapago/{prestamosTotales}",
+        composable("ConsultaPago/{prestamosTotales}",
             arguments = listOf(
                 navArgument(name = "prestamosTotales"){
                     type = NavType.IntType
