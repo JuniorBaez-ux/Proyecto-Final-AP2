@@ -98,7 +98,7 @@ fun RegistroPagoScreen(
                         }
                     }
                 },
-                backgroundColor = MaterialTheme.colors.primary
+                backgroundColor = MaterialTheme.colors.secondary
             ) {
                 Icon(imageVector = Icons.Default.SaveAs, contentDescription = "Guardar")
             }

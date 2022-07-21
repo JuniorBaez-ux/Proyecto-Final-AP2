@@ -72,7 +72,9 @@ fun pagoItem(pago: Pago, onClick : (Pago)->Unit){
         Card(modifier = Modifier
             .fillMaxWidth()
             .height(80.dp).padding(vertical = 5.dp)
-            .clickable { onClick(pago) }) {
+            .clickable { onClick(pago) },
+            backgroundColor = MaterialTheme.colors.primary
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
