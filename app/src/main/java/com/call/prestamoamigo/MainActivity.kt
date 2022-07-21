@@ -53,13 +53,35 @@ fun MyApp() {
         composable("RegistroPersonas"){
             RegistroPersonasScreen(navHostController = navHostController)
         }
-        composable("DashBoard/{id}",
+        composable("DashBoard/{id}/{nombre}/{telefono}/{correo}/{direccion}/{prestamosTotales}",
             arguments = listOf(navArgument(name = "id"){
+                    type = NavType.IntType
+            },
+            navArgument(name = "nombre"){
+                type = NavType.StringType
+            },
+            navArgument(name = "telefono"){
+                type = NavType.StringType
+            },
+            navArgument(name = "correo"){
+                type = NavType.StringType
+            },
+            navArgument(name = "direccion"){
+                type = NavType.StringType
+            },
+            navArgument(name = "prestamosTotales"){
                 type = NavType.IntType
-            })){
+            }
+            )){
             val personaIdentification = it.arguments?.getInt("id").toString()
-            Log.d("Args", it.arguments?.getInt("id").toString())
-            DashBoard(navHostController = navHostController, personaIdentification.toInt())
+            val prestamosTotalesDelCliente = it.arguments?.getInt("prestamosTotales").toString()
+            Log.d("Id de la persona", it.arguments?.getInt("id").toString())
+            Log.d("Nombre de la persona", it.arguments?.getString("nombre").toString())
+            Log.d("Correo de la persona", it.arguments?.getString("correo").toString())
+            Log.d("Telefono de la persona", it.arguments?.getString("telefono").toString())
+            Log.d("Direccion de la persona", it.arguments?.getString("direccion").toString())
+            Log.d("Prestamos totales de la persona", it.arguments?.getInt("id").toString())
+            DashBoard(navHostController = navHostController, personaIdentification.toInt(),  prestamosTotalesDelCliente.toInt())
 
         }
         composable("RegistroPrestamo/{id}",
@@ -70,16 +92,29 @@ fun MyApp() {
             Log.d("Args", it.arguments?.getInt("id").toString())
             RegistroPrestamoSceen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt())
         }
-        composable("ConsultaPrestamo/{id}",
+        composable("ConsultaPrestamo/{id}/{prestamosTotales}",
             arguments = listOf(navArgument(name = "id"){
                 type = NavType.IntType
-            })){
+            },
+                navArgument(name = "prestamosTotales"){
+                    type = NavType.IntType
+                }
+            )){
             val personaIdentification = it.arguments?.getInt("id").toString()
+            val prestamosTotalesDelCliente = it.arguments?.getInt("prestamosTotales").toString()
             Log.d("Args", it.arguments?.getInt("id").toString())
-            ConsultaPrestamoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt())
+            Log.d("Prestamos totales de la persona", it.arguments?.getInt("id").toString())
+            ConsultaPrestamoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt(), prestamosTotalesDelCliente.toInt())
         }
-        composable("Consultapago"){
-            ConsultaPagoScreen(navHostController = navHostController)
+        composable("Consultapago/{prestamosTotales}",
+            arguments = listOf(
+                navArgument(name = "prestamosTotales"){
+                    type = NavType.IntType
+                }
+            )){
+            val prestamosTotalesDelCliente = it.arguments?.getInt("prestamosTotales").toString()
+            Log.d("Prestamos totales de la persona", it.arguments?.getInt("id").toString())
+            ConsultaPagoScreen(navHostController = navHostController, hiltViewModel(), prestamosTotalesDelCliente.toInt())
         }
         composable("Registropago"){
             RegistroPagoScreen(navHostController = navHostController)

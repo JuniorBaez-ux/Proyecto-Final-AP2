@@ -23,7 +23,8 @@ import com.call.prestamoamigo.view.Prestamo.Row.RowPrestamo
 fun ConsultaPrestamoScreen(
     navHostController: NavHostController,
     PrestamoViewModel: PrestamoViewModel = hiltViewModel(),
-    personaIdentification: Int
+    personaIdentification: Int,
+    prestamosTotalesDelCliente: Int
 ){
     val listaPrestamo = PrestamoViewModel.prestamos.collectAsState(initial = emptyList())
     val ScaffoldState = rememberScaffoldState()
