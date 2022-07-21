@@ -93,14 +93,22 @@ fun RegistroPersonasScreen(
 
         OutlinedButton(
             onClick = {
-                error = personaViewModel.nombre.isBlank() && personaViewModel.telefono.isBlank() && personaViewModel.correo.isBlank() && personaViewModel.direccion.isBlank()
-                if (!error){
+                if (!validateNameAndDirection(personaViewModel.nombre)){
+                    Toast.makeText(context, "Por favor revise el campo Nombre", Toast.LENGTH_SHORT).show()
+                }
+                else if (!validateTelephone(personaViewModel.telefono)){
+                    Toast.makeText(context, "Revise el formato del campo Telefono", Toast.LENGTH_SHORT).show()
+                }
+                else if (!validateEmail(personaViewModel.correo)){
+                    Toast.makeText(context, "Revise el formato del campo Email", Toast.LENGTH_SHORT).show()
+                }
+                else if (!validateNameAndDirection(personaViewModel.direccion)){
+                    Toast.makeText(context, "Por favor revise el campo Direccion", Toast.LENGTH_SHORT).show()
+                }
+                if (validateNameAndDirection(personaViewModel.nombre) && validateNameAndDirection(personaViewModel.direccion) && validateEmail(personaViewModel.correo) &&validateTelephone(personaViewModel.telefono)){
                     personaViewModel.Guardar()
                     navHostController.navigate("ConsultaPersonas")
-                }else{
-                    Toast.makeText(context, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
                 }
-
             }, modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
         ) {
             Text(text = "Guardar", color = Color.Black)
@@ -109,13 +117,16 @@ fun RegistroPersonasScreen(
     }
 }
 
-/*
-fun validateNumber(number:String): Boolean {
-    val validation = number.toDouble()
+fun validateNameAndDirection(evaluacion: String) : Boolean{
+    return evaluacion.isNotEmpty() && evaluacion.length > 2
+}
 
-    if (validation >= 0){
-        return true
-    }else{
-        return false
-    }
-}*/
+fun validateEmail(correo: String) : Boolean{
+    var patron =  "([a-z0-9]+@[a-z]+\\.[a-z]{2,3})".toRegex()
+    return patron.containsMatchIn(correo)
+}
+
+fun validateTelephone(telefono: String) : Boolean{
+    var patron =  "(^[0-9]{3}-[0-9]{3}-[0-9]{4})".toRegex()
+    return patron.containsMatchIn(telefono)
+}
