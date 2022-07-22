@@ -172,6 +172,7 @@ fun RegistroPagoScreen(
                             onClick = {
                                 pagoViewModel.selectedPrestamo = selectPrestamos.concepto
                                 pagoViewModel.selectId = selectPrestamos.prestamoId
+                                pagoViewModel.selectmonto = selectPrestamos.monto.toDouble()
                                 pagoViewModel.expanded = false
                             }
                         ) {
@@ -195,8 +196,9 @@ fun RegistroPagoScreen(
             )
 
             TextField(
-                value = pagoViewModel.monto,
-                onValueChange = {pagoViewModel.monto = it},
+                value = pagoViewModel.selectmonto.toString(),
+                onValueChange = {pagoViewModel.selectmonto},
+                readOnly = true,
                 label = { Text(text = "Monto") },
                 modifier = Modifier
                     .fillMaxWidth()

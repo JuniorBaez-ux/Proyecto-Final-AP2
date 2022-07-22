@@ -28,7 +28,7 @@ class PagoViewModel @Inject constructor(
     var pagos = pagosRepository.GetLista()
         private set
 
-    var prestamosPersonas = pagosRepository.listaPrestamos(2)
+    var prestamosPersonas = pagosRepository.listaPrestamos( 1)
     private set
 
     val options = listOf("")
@@ -36,6 +36,7 @@ class PagoViewModel @Inject constructor(
     var expanded by mutableStateOf(false)
     var selectedPrestamo by mutableStateOf(options[0])
     var selectId by mutableStateOf(0)
+    var selectmonto by mutableStateOf(0.00)
 
     fun Guardar(){
         viewModelScope.launch {
