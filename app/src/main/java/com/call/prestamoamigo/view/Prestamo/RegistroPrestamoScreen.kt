@@ -71,7 +71,7 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
         Column(modifier = Modifier.padding(8.dp)) {
 
 
-                OutlinedTextField(
+            OutlinedTextField(
                     value = PrestamoViewModel.fecha,
                     onValueChange = { PrestamoViewModel.fecha = it },
                     modifier = Modifier.fillMaxWidth(),
@@ -91,7 +91,7 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
 
                 )
 
-                OutlinedTextField(
+            OutlinedTextField(
                     value = PrestamoViewModel.concepto,
                     onValueChange = { PrestamoViewModel.concepto = it },
                     modifier = Modifier
@@ -108,7 +108,7 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                    }
                 )
 
-                    OutlinedTextField(
+            OutlinedTextField(
                         value = PrestamoViewModel.monto,
                         onValueChange = { PrestamoViewModel.monto = it },
                         modifier = Modifier
@@ -123,7 +123,6 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                                 contentDescription = null
                             ) },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-
                     )
 
             OutlinedTextField(
