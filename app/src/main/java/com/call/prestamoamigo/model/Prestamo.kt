@@ -11,8 +11,7 @@ data class Prestamo(
     val fecha: String,
     val vence: String,
     val monto: Double ,
-    val balance: Double,
-    val personaId: Int
-
+    val activo: Int,
+    val personaId: Int,
 
 )
