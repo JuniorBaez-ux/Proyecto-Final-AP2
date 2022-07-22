@@ -33,4 +33,13 @@ interface PrestamosDao {
     )
     fun GetLista(): Flow<List<Prestamo>>
 
+    @Query(
+        """
+        UPDATE Personas
+        SET prestamosTotales = prestamosTotales + 1
+        WHERE personaId =:personaId  
+    """
+    )
+    suspend fun aumentoPrestamosTotales(personaId: Int?)
+
 }
