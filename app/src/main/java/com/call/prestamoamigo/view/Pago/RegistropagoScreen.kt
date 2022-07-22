@@ -70,7 +70,7 @@ fun RegistroPagoScreen(
                     fechaValidar = pagoViewModel.fecha.isBlank()
                     prestamoValidar = pagoViewModel.selectedPrestamo.isBlank()
                     conceptoValidar = pagoViewModel.concepto.isBlank()
-                    montoValidar = pagoViewModel.monto.isBlank()
+                    montoValidar = pagoViewModel.selectmonto.toString().isBlank()
                     prestamoIdValidar = pagoViewModel.selectId.toString().isBlank()
 
 
@@ -86,12 +86,12 @@ fun RegistroPagoScreen(
                         Toast.makeText(context, "Concepto no debe estar vacio", Toast.LENGTH_SHORT).show()
                     }
 
-                    if(pagoViewModel.monto.toString() == ""){
+                    if(pagoViewModel.selectmonto.toString() == ""){
                         Toast.makeText(context, "Monto no debe estar vacio", Toast.LENGTH_SHORT).show()
                     }
 
                     if(!fechaValidar && !prestamoValidar && !conceptoValidar && !montoValidar && !prestamoIdValidar){
-                        if(pagoViewModel.monto.toFloat() > 0){
+                        if(pagoViewModel.selectmonto.toFloat() > 0){
                             pagoViewModel.Guardar()
                             Toast.makeText(context, "Guardado", Toast.LENGTH_SHORT).show()
                             navHostController.navigate("consultaPago/$personaIdentification")

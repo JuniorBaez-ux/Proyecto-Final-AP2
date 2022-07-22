@@ -23,8 +23,6 @@ class PagoViewModel @Inject constructor(
 ): ViewModel(){
     var fecha by mutableStateOf("")
     var concepto by mutableStateOf("")
-    var monto by mutableStateOf("")
-
     var pagos = pagosRepository.GetLista()
         private set
 
@@ -46,7 +44,7 @@ class PagoViewModel @Inject constructor(
                     fecha = fecha,
                     prestamoId = selectId.toInt(),
                     concepto = concepto,
-                    monto = monto.toFloat()
+                    monto = selectmonto.toFloat()
                 )
             )
         }
