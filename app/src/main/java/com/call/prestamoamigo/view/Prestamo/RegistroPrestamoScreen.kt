@@ -32,7 +32,7 @@ import java.util.*
 @Composable
 fun RegistroPrestamoSceen(navHostController: NavHostController,
                           PrestamoViewModel: PrestamoViewModel = hiltViewModel(),
-                          personaIdentification: Int
+                          personaIdentification: Int,
 ){
     val context = LocalContext.current
     val contexto = LocalContext.current
@@ -154,7 +154,9 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                                 Toast.makeText(context, "Usted Sabe escribir", Toast.LENGTH_SHORT).show()
                                 PrestamoViewModel.personaIdentification = personaIdentification;
                                 PrestamoViewModel.Guardar()
+/*
                                 navHostController.navigate("ConsultaPrestamo/$personaIdentification")
+*/
                             }
                     }else{
                         Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show() }

@@ -9,8 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.call.prestamoamigo.model.Persona
+import com.call.prestamoamigo.ui.theme.backgroundColor
+import com.call.prestamoamigo.ui.theme.primaryColor
 
 
 @Composable
@@ -30,14 +31,17 @@ fun ConsultaPersonasScreen(
     navHostController: NavHostController,
     personaViewModel: PersonaViewModel = hiltViewModel()
 ){
-
-    /*fun getMontoFromPrestamos(personaID: Int): Double {
-        return personaViewModel.getMontoFromPrestamos(personaID)
-    }*/
-
     val ScaffoldState = rememberScaffoldState()
 
-
+    fun getMontoFromPrestamos(personaId: Int?, prestamosTotales: Int?) : Double{
+        var montoDelPrestamo by mutableStateOf(0.0)
+        if (prestamosTotales!= 0){
+            montoDelPrestamo = personaViewModel.GetMontoPrestamo(personaId)
+            return montoDelPrestamo
+        }else{
+            return 0.0
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -60,7 +64,9 @@ fun ConsultaPersonasScreen(
 
             LazyColumn(modifier = Modifier.fillMaxSize()){
                 items(listapersonas.value){
-                        persona -> RowPersonas(navHostController =  navHostController, persona = persona, persona.personaId/*, montoPrestamo = getMontoFromPrestamos(persona.personaId)*/
+                    persona -> RowPersonas(navHostController =  navHostController, persona = persona, persona.personaId,
+                    persona.nombre, persona.telefono, persona.correo, persona.direccion, persona.prestamosTotales,
+                    montoPrestamo = getMontoFromPrestamos(persona.personaId, persona.prestamosTotales)
                     /*monto = persona.monto, concepto = persona.concepto*/)
                 }
             }
@@ -70,32 +76,31 @@ fun ConsultaPersonasScreen(
 }
 
 @Composable
-fun RowPersonas(navHostController: NavHostController, persona:Persona, id:Int/*, montoPrestamo:Double,*/ /*fechaUltimoPrestamo:String,*/
+fun RowPersonas(navHostController: NavHostController, persona:Persona, id:Int, nombre:String, telefono:String,
+                correo:String, direccion:String, prestamosTotales:Int, montoPrestamo:Double, /*fechaUltimoPrestamo:String,*/
 ) {
     Column(modifier = Modifier
         .fillMaxWidth()
-        .clickable {navHostController.navigate("DashBoard/$id") }
+        .clickable {navHostController.navigate("DashBoard/$id/$nombre/$telefono/$correo/$direccion/$prestamosTotales") }
         .padding(16.dp)
-        .background(color = Color(0xFF82D4BB))
+
     ) {
         Card(modifier = Modifier
             .fillMaxWidth()
             .height(120.dp).padding(vertical = 5.dp)
-            .background(color = Color(0xFF82D4BB))
+            , backgroundColor = MaterialTheme.colors.primary
             ) {
-            Row(
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(30.dp)
-                    .background(color = Color(0xFF82D4BB))
-                    .padding(8.dp),
-
-                ) {
-
-                Column(
+                    .fillMaxWidth().padding(5.dp),
+                    verticalArrangement = Arrangement.SpaceEvenly
+                ){
+                Row(
                     modifier = Modifier
-                        .fillMaxWidth().padding(5.dp),
-
+                        .fillMaxWidth()
+                        .background(color = Color(0xFF82D4BB))
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
 
                     Text(
@@ -108,26 +113,38 @@ fun RowPersonas(navHostController: NavHostController, persona:Persona, id:Int/*,
 
                     Text(
                         modifier = Modifier.padding(vertical = 5.dp),
+                        text = "$montoPrestamo",
+                        style = MaterialTheme.typography.body2,
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.Bold,
+                    )
+
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(color = Color(0xFF82D4BB))
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ){
+                    Text(
+                        modifier = Modifier.padding(vertical = 5.dp),
                         text = "${persona.prestamosTotales}" + " Prestamos",
                         style = MaterialTheme.typography.body2,
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold
                     )
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
 
-                        ) {
-                       /*Text(text = "$montoPrestamo")*/
-
-                        /*Text(text = "$${pago.monto}")*/
-
-
-                    }
-
+                    //Fecha
+                    Text(
+                        modifier = Modifier.padding(vertical = 5.dp),
+                        text = "Aqui deberia ir la fecha",
+                        style = MaterialTheme.typography.body2,
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.Bold
+                    )
                 }
+
             }
         }
     }

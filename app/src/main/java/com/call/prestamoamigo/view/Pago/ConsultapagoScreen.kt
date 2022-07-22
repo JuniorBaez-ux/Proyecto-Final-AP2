@@ -23,7 +23,8 @@ import com.call.prestamoamigo.model.Pago
 @Composable
 fun ConsultaPagoScreen(
     navHostController: NavHostController,
-    pagoViewModel: PagoViewModel = hiltViewModel()
+    pagoViewModel: PagoViewModel = hiltViewModel(),
+    personaIdentification: Int
 ){
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
@@ -35,7 +36,7 @@ fun ConsultaPagoScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navHostController.navigate("registroPago")
+                    navHostController.navigate("registroPago/$personaIdentification")
                 },
                 backgroundColor = MaterialTheme.colors.secondary
             ) {
@@ -71,7 +72,9 @@ fun pagoItem(pago: Pago, onClick : (Pago)->Unit){
         Card(modifier = Modifier
             .fillMaxWidth()
             .height(80.dp).padding(vertical = 5.dp)
-            .clickable { onClick(pago) }) {
+            .clickable { onClick(pago) },
+            backgroundColor = MaterialTheme.colors.primary
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

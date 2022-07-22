@@ -28,7 +28,6 @@ class PersonaViewModel @Inject constructor(
     var direccion by mutableStateOf("")
     var prestamosTotales by mutableStateOf(0)
 
-
     fun Guardar(){
         viewModelScope.launch {
             personasRepository.Insertar(
@@ -44,7 +43,14 @@ class PersonaViewModel @Inject constructor(
         }
     }
 
-   /* fun getMontoFromPrestamos(personaID: Int): Double {
-        return personasRepository.GetMontoFromPrestamos(personaID)
-    }*/
+    fun GetMontoPrestamo(personaId: Int?): Double{
+        var monto by mutableStateOf(0.0)
+        if (personaId!=null){
+            viewModelScope.launch {
+                monto = personasRepository.GetMontoFromPrestamos(personaId)
+            }
+            return monto
+        }else
+            return monto
+    }
 }

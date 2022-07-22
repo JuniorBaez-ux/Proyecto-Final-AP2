@@ -2,6 +2,7 @@ package com.call.prestamoamigo.data
 
 import androidx.room.*
 import com.call.prestamoamigo.model.Pago
+import com.call.prestamoamigo.model.Prestamo
 import kotlinx.coroutines.flow.Flow
 
 
@@ -32,5 +33,8 @@ interface PagosDao {
     """
     )
     fun GetLista(): Flow<List<Pago>>
+
+    @Query("SELECT *FROM Prestamos WHERE personaId=:personaId ORDER BY prestamoId")
+    fun listaPrestamos(personaId: Int): Flow<List<Prestamo>>
 
 }
