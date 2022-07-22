@@ -35,7 +35,7 @@ interface PersonasDao {
 
     @Query(
         """
-        SELECT SUM(balance)
+        SELECT SUM(monto)
         FROM Prestamos
         WHERE personaId =:personaId
     """
