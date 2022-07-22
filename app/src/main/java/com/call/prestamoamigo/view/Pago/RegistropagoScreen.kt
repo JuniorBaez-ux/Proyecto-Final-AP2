@@ -36,6 +36,8 @@ fun RegistroPagoScreen(
     personaIdentification: Int
     ) {
 
+    pagoViewModel.pagosRepository.listaPrestamos(personaIdentification)
+
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
     val contexto = LocalContext.current
@@ -165,7 +167,7 @@ fun RegistroPagoScreen(
                     }
                 ) {
 
-                    val lista = pagoViewModel.prestamosPersonas.collectAsState(initial = emptyList())
+                    val lista = pagoViewModel.pagosRepository.listaPrestamos(personaIdentification).collectAsState(initial = emptyList())
 
                     lista.value.forEach() { selectPrestamos ->
                         DropdownMenuItem(
