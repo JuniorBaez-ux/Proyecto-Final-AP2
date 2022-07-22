@@ -49,5 +49,4 @@ class PrestamoViewModel @Inject constructor(
     suspend fun aumentoPrestamosTotales(personaId: Int?){
         prestamosRepository.aumentoPrestamosTotales(personaId)
     }
-
 }
