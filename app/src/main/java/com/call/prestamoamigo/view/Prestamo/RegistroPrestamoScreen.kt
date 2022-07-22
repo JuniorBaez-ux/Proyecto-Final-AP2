@@ -154,9 +154,9 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                                 Toast.makeText(context, "Usted Sabe escribir", Toast.LENGTH_SHORT).show()
                                 PrestamoViewModel.personaIdentification = personaIdentification;
                                 PrestamoViewModel.Guardar()
-/*
+
                                 navHostController.navigate("ConsultaPrestamo/$personaIdentification")
-*/
+
                             }
                     }else{
                         Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show() }
