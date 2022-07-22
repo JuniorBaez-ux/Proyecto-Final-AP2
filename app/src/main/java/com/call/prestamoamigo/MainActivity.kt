@@ -75,13 +75,17 @@ fun MyApp() {
             )){
             val personaIdentification = it.arguments?.getInt("id").toString()
             val prestamosTotalesDelCliente = it.arguments?.getInt("prestamosTotales").toString()
+            val nombrePersona = it.arguments?.getString("nombre").toString()
+            val telefonoPersona = it.arguments?.getString("telefono").toString()
+            val correoPersona = it.arguments?.getString("correo").toString()
+            val direccionPersona = it.arguments?.getString("direccion").toString()
             Log.d("Id de la persona", it.arguments?.getInt("id").toString())
             Log.d("Nombre de la persona", it.arguments?.getString("nombre").toString())
             Log.d("Correo de la persona", it.arguments?.getString("correo").toString())
             Log.d("Telefono de la persona", it.arguments?.getString("telefono").toString())
             Log.d("Direccion de la persona", it.arguments?.getString("direccion").toString())
             Log.d("Prestamos totales de la persona", it.arguments?.getInt("id").toString())
-            DashBoard(navHostController = navHostController, personaIdentification.toInt(),  prestamosTotalesDelCliente.toInt())
+            DashBoard(navHostController = navHostController, personaIdentification.toInt(),  prestamosTotalesDelCliente.toInt(), nombrePersona, telefonoPersona, correoPersona, direccionPersona)
 
         }
         composable("RegistroPrestamo/{id}",
