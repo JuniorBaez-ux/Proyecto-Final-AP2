@@ -26,13 +26,11 @@ class PagoViewModel @Inject constructor(
     var pagos = pagosRepository.GetLista()
         private set
 
-    var prestamosPersonas = pagosRepository.listaPrestamos( 1)
+    var prestamosPersonas = pagosRepository.listaPrestamos(3)
     private set
 
-    val options = listOf("")
-
     var expanded by mutableStateOf(false)
-    var selectedPrestamo by mutableStateOf(options[0])
+    var selectedPrestamo by mutableStateOf("")
     var selectId by mutableStateOf(0)
     var selectmonto by mutableStateOf(0.00)
 
@@ -49,6 +47,4 @@ class PagoViewModel @Inject constructor(
             )
         }
     }
-
-
 }
