@@ -32,7 +32,9 @@ import java.util.*
 @Composable
 fun RegistroPagoScreen(
     navHostController: NavHostController,
-    pagoViewModel: PagoViewModel = hiltViewModel()) {
+    pagoViewModel: PagoViewModel = hiltViewModel(),
+    personaIdentification: Int
+    ) {
 
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
@@ -92,7 +94,7 @@ fun RegistroPagoScreen(
                         if(pagoViewModel.monto.toFloat() > 0){
                             pagoViewModel.Guardar()
                             Toast.makeText(context, "Guardado", Toast.LENGTH_SHORT).show()
-                            //navHostController.navigate("consultaPago")
+                            navHostController.navigate("consultaPago/$personaIdentification")
                         }else{
                             Toast.makeText(context, "El Monto debe de ser mayor a 0", Toast.LENGTH_SHORT).show()
                         }

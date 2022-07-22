@@ -116,8 +116,16 @@ fun MyApp() {
             Log.d("ID de la persona", it.arguments?.getInt("id").toString())
             ConsultaPagoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt())
         }
-        composable("Registropago"){
-            RegistroPagoScreen(navHostController = navHostController)
+        composable("Registropago/{id}",
+            arguments = listOf(
+                navArgument(name = "id"){
+                    type = NavType.IntType
+                }
+            )
+            ){
+            val personaIdentification = it.arguments?.getInt("id").toString()
+            Log.d("ID de la persona", it.arguments?.getInt("id").toString())
+            RegistroPagoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt())
         }
     }
 }
