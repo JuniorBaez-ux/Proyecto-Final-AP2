@@ -21,8 +21,9 @@ class PrestamoViewModel @Inject constructor(
     var concepto by mutableStateOf("")
     var monto by mutableStateOf("")
     var vence by mutableStateOf("")
-    var balance by mutableStateOf(0)
+    var activo by mutableStateOf(0)
     var personaIdentification by mutableStateOf(0)
+
 
     var prestamos = prestamosRepository.GetLista()
         private set
@@ -38,9 +39,15 @@ class PrestamoViewModel @Inject constructor(
                     concepto = concepto,
                     monto = monto.toString().toDouble(),
                     vence = vence,
-                    balance = monto.toString().toDouble(),
+                    activo = 0,
                  )
             )
+            aumentoPrestamosTotales(personaIdentification.toInt())
         }
     }
+
+    suspend fun aumentoPrestamosTotales(personaId: Int?){
+        prestamosRepository.aumentoPrestamosTotales(personaId)
+    }
+
 }
