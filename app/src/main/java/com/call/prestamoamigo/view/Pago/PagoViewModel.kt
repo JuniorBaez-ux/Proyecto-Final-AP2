@@ -20,7 +20,6 @@ import javax.inject.Inject
 @HiltViewModel
 class PagoViewModel @Inject constructor(
     val pagosRepository: PagosRepository,
-    val prestamosRepository: PrestamosRepository,
 ): ViewModel(){
     var fecha by mutableStateOf("")
     var concepto by mutableStateOf("")
@@ -29,8 +28,8 @@ class PagoViewModel @Inject constructor(
     var pagos = pagosRepository.GetLista()
         private set
 
-    var prestamos = prestamosRepository.GetLista()
-        private set
+    var prestamosPersonas = pagosRepository.listaPrestamos(2)
+    private set
 
     val options = listOf("")
 

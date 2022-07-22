@@ -163,7 +163,7 @@ fun RegistroPagoScreen(
                     }
                 ) {
 
-                    val lista = pagoViewModel.prestamos.collectAsState(initial = emptyList())
+                    val lista = pagoViewModel.prestamosPersonas.collectAsState(initial = emptyList())
 
                     lista.value.forEach() { selectPrestamos ->
                         DropdownMenuItem(
