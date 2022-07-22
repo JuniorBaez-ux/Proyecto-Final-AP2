@@ -16,4 +16,6 @@ class PrestamosRepository @Inject constructor(
     suspend fun Eliminar(prestamos: Prestamo)= prestamosDao.Eliminar(prestamos)
 
     fun GetLista(): Flow<List<Prestamo>> = prestamosDao.GetLista()
+
+    suspend fun aumentoPrestamosTotales(personaId: Int?) = prestamosDao.aumentoPrestamosTotales(personaId)
 }
