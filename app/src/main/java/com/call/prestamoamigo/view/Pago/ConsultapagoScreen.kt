@@ -24,7 +24,7 @@ import com.call.prestamoamigo.model.Pago
 fun ConsultaPagoScreen(
     navHostController: NavHostController,
     pagoViewModel: PagoViewModel = hiltViewModel(),
-    prestamosTotalesDelCliente: Int
+    personaIdentification: Int
 ){
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current

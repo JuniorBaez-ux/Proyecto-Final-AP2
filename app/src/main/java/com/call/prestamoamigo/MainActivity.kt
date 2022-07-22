@@ -106,15 +106,15 @@ fun MyApp() {
             Log.d("Prestamos totales de la persona", it.arguments?.getInt("id").toString())
             ConsultaPrestamoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt(), prestamosTotalesDelCliente.toInt())
         }
-        composable("ConsultaPago/{prestamosTotales}",
+        composable("ConsultaPago/{id}",
             arguments = listOf(
-                navArgument(name = "prestamosTotales"){
+                navArgument(name = "id"){
                     type = NavType.IntType
                 }
             )){
-            val prestamosTotalesDelCliente = it.arguments?.getInt("prestamosTotales").toString()
-            Log.d("Prestamos totales de la persona", it.arguments?.getInt("id").toString())
-            ConsultaPagoScreen(navHostController = navHostController, hiltViewModel(), prestamosTotalesDelCliente.toInt())
+            val personaIdentification = it.arguments?.getInt("id").toString()
+            Log.d("ID de la persona", it.arguments?.getInt("id").toString())
+            ConsultaPagoScreen(navHostController = navHostController, hiltViewModel(), personaIdentification.toInt())
         }
         composable("Registropago"){
             RegistroPagoScreen(navHostController = navHostController)

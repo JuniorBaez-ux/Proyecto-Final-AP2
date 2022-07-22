@@ -42,7 +42,7 @@ fun DashBoard (navHostController: NavHostController,personaIdentification: Int, 
                 .fillMaxWidth()) {
                Text(text = "Prestamo")
             }
-            Button(onClick = {navHostController.navigate("ConsultaPago/$prestamosTotalesDelCliente")  },
+            Button(onClick = {navHostController.navigate("ConsultaPago/$personaIdentification")  },
                 modifier = Modifier
                     .fillMaxWidth()) {
                 Text(text = "Pagar")
