@@ -23,6 +23,9 @@ class PagoViewModel @Inject constructor(
 ): ViewModel(){
     var fecha by mutableStateOf("")
     var concepto by mutableStateOf("")
+
+    var personaIdentification by mutableStateOf(0)
+
     var pagos = pagosRepository.GetLista()
         private set
 
@@ -43,6 +46,7 @@ class PagoViewModel @Inject constructor(
                 )
             )
             pagosRepository.pagarPrestamo(selectId)
+            pagosRepository.disminuirPrestamo(personaIdentification)
         }
     }
 }

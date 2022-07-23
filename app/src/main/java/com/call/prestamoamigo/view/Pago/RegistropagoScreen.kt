@@ -37,6 +37,7 @@ fun RegistroPagoScreen(
     ) {
 
     pagoViewModel.pagosRepository.listaPrestamos(personaIdentification)
+    pagoViewModel.personaIdentification = personaIdentification
 
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
