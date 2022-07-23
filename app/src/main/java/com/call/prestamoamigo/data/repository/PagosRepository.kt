@@ -19,4 +19,6 @@ class PagosRepository @Inject constructor(
     fun GetLista(): Flow<List<Pago>> = pagosDao.GetLista()
 
     fun listaPrestamos(personaId: Int): Flow<List<Prestamo>> = pagosDao.listaPrestamos(personaId)
+
+    fun pagarPrestamo(prestamoId: Int) = pagosDao.pagarPrestamo(prestamoId)
 }
