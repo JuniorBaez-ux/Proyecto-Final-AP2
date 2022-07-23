@@ -42,6 +42,7 @@ class PagoViewModel @Inject constructor(
                     monto = selectmonto.toFloat()
                 )
             )
+            pagosRepository.pagarPrestamo(selectId)
         }
     }
 }

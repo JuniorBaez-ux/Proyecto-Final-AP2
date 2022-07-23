@@ -38,6 +38,9 @@ interface PagosDao {
     fun listaPrestamos(personaId: Int): Flow<List<Prestamo>>
 
     @Query("UPDATE Prestamos SET activo = 1 WHERE prestamoId=:prestamoId")
-    fun pagarPrestamo(prestamoId: Int)
+    suspend fun pagarPrestamo(prestamoId: Int)
+
+    @Query("UPDATE Personas SET prestamosTotales = prestamosTotales - 1")
+    suspend fun disminuirPrestamo(personaId:Int)
 
 }
