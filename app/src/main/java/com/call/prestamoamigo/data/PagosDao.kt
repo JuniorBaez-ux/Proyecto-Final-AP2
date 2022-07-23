@@ -40,7 +40,7 @@ interface PagosDao {
     @Query("UPDATE Prestamos SET activo = 1 WHERE prestamoId=:prestamoId")
     suspend fun pagarPrestamo(prestamoId: Int)
 
-    @Query("UPDATE Personas SET prestamosTotales = prestamosTotales - 1")
+    @Query("UPDATE Personas SET prestamosTotales = prestamosTotales - 1 WHERE personaId =:personaId")
     suspend fun disminuirPrestamo(personaId:Int)
 
 }
