@@ -37,4 +37,7 @@ interface PagosDao {
     @Query("SELECT *FROM Prestamos WHERE personaId=:personaId AND activo = 0 ORDER BY prestamoId")
     fun listaPrestamos(personaId: Int): Flow<List<Prestamo>>
 
+    @Query("UPDATE Prestamos SET activo = 1 WHERE prestamoId=:prestamoId")
+    fun pagarPrestamo(prestamoId: Int)
+
 }
