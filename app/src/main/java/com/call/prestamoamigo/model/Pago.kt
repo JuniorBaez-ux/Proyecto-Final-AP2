@@ -10,5 +10,6 @@ data class Pago(
     val fecha: String,
     val prestamoId: Int,
     val concepto: String,
-    val monto: Float
+    val monto: Float,
+    val personaId: Int
 )

@@ -42,7 +42,8 @@ class PagoViewModel @Inject constructor(
                     fecha = fecha,
                     prestamoId = selectId.toInt(),
                     concepto = concepto,
-                    monto = selectmonto.toFloat()
+                    monto = selectmonto.toFloat(),
+                    personaId = personaIdentification
                 )
             )
             pagosRepository.pagarPrestamo(selectId)

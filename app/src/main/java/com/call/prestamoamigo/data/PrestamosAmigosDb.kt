@@ -9,7 +9,7 @@ import com.call.prestamoamigo.model.Prestamo
 
 @Database(
     entities = [Prestamo::class, Persona::class, Pago::class],
-    version = 3
+    version = 4
 )
 abstract class PrestamosAmigosDb: RoomDatabase() {
     abstract  val prestamosDao: PrestamosDao
