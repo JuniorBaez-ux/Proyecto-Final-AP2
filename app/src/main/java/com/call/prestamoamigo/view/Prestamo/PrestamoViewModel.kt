@@ -42,11 +42,8 @@ class PrestamoViewModel @Inject constructor(
                     activo = 0,
                  )
             )
-            aumentoPrestamosTotales(personaIdentification.toInt())
-        }
-    }
 
-    suspend fun aumentoPrestamosTotales(personaId: Int?){
-        prestamosRepository.aumentoPrestamosTotales(personaId)
+            prestamosRepository.aumentoPrestamosTotales(personaIdentification)
+        }
     }
 }

@@ -38,7 +38,7 @@ fun DashBoard (navHostController: NavHostController,personaIdentification: Int, 
                     ){
 
             }
-            Button(onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification/$prestamosTotalesDelCliente") },
+            Button(onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
                 modifier = Modifier
                 .fillMaxWidth()) {
                Text(text = "Prestamo")
