@@ -18,4 +18,7 @@ class PersonasRepository @Inject constructor(
     fun GetLista(): Flow<List<Persona>> = personasDao.GetLista()
 
     suspend fun GetMontoFromPrestamos(personaId: Int?): Double = personasDao.GetMontoFromPrestamos(personaId)
+
+    suspend fun GetFechas(prestamoId: Int?): String = personasDao.GetFechas(prestamoId)
+
 }

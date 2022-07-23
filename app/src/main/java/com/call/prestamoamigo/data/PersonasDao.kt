@@ -40,7 +40,19 @@ interface PersonasDao {
         WHERE personaId =:personaId
     """
     )
-    fun GetMontoFromPrestamos(personaId:Int?): Double
+    suspend fun GetMontoFromPrestamos(personaId:Int?): Double
 
+    @Query(
+        """
+        SELECT fecha FROM Pagos 
+        WHERE prestamoId =:prestamoId
+        ORDER BY fecha
+        DESC LIMIT 1
+    """
+    )
+    suspend fun GetFechas(prestamoId: Int?): String
+
+
+    //SELECT fecha FROM Pagos ORDER BY fecha DESC LIMIT 1;
     //SELECT fecha FROM Pagos WHERE
 }

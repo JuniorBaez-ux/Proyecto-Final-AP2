@@ -11,7 +11,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//TODO Implementar view model de la clase correspondiente
 
 @HiltViewModel
 class PersonaViewModel @Inject constructor(
@@ -27,6 +26,7 @@ class PersonaViewModel @Inject constructor(
     var correo by mutableStateOf("")
     var direccion by mutableStateOf("")
     var prestamosTotales by mutableStateOf(0)
+    var monto by mutableStateOf(0.0)
 
     fun Guardar(){
         viewModelScope.launch {
@@ -44,7 +44,6 @@ class PersonaViewModel @Inject constructor(
     }
 
     fun GetMontoPrestamo(personaId: Int?): Double{
-        var monto by mutableStateOf(0.0)
         if (personaId!=null){
             viewModelScope.launch {
                 monto = personasRepository.GetMontoFromPrestamos(personaId)
