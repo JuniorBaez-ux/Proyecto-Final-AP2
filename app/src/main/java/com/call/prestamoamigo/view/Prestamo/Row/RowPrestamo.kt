@@ -71,7 +71,7 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
                             overflow = TextOverflow.Ellipsis,
                             color = Color.Black)
 
-                        Text("$ ${prestamo.balance}",
+                        Text("$ ${prestamo.activo}",
                                 style = MaterialTheme.typography.body1,
                                 overflow = TextOverflow.Ellipsis,
                                 color = Color.Black)

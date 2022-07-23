@@ -34,7 +34,7 @@ interface PagosDao {
     )
     fun GetLista(): Flow<List<Pago>>
 
-    @Query("SELECT *FROM Prestamos WHERE personaId=:personaId ORDER BY prestamoId")
+    @Query("SELECT *FROM Prestamos WHERE personaId=:personaId AND activo = 0 ORDER BY prestamoId")
     fun listaPrestamos(personaId: Int): Flow<List<Prestamo>>
 
 }
