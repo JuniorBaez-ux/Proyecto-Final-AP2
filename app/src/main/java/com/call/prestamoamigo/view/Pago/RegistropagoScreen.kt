@@ -2,10 +2,14 @@ package com.call.prestamoamigo.view.Pago
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.text.Layout
 import android.widget.DatePicker
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement.Top
+import androidx.compose.foundation.layout.WindowInsetsSides.Companion.Top
 import androidx.compose.material.*
 import androidx.compose.material.ExposedDropdownMenuDefaults.TrailingIcon
 import androidx.compose.material.icons.Icons
@@ -15,6 +19,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -128,8 +134,19 @@ fun RegistroPagoScreen(
                     label = { Text(text = "Fecha")},
                     readOnly = true,
                     leadingIcon = {
-                        IconButton(onClick = { date.show() }) {
-                            Icon(imageVector = Icons.Default.CalendarToday, contentDescription = "Guardar")
+                        Icon(
+                            imageVector = Icons.Default.CalendarMonth,
+                            contentDescription = "",
+                        )
+                    },
+                    trailingIcon = {
+                        IconButton(
+                            onClick = { date.show() }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.CalendarToday,
+                                contentDescription = "",
+                            )
                         }
                     }
 
