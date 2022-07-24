@@ -22,7 +22,7 @@ fun DashBoard (navHostController: NavHostController,personaIdentification: Int, 
     val context = LocalContext.current
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text = "Dashboard") })
+            TopAppBar(title = { Text(text =  "Dashboard") })
         },
 
         scaffoldState = ScaffoldState
