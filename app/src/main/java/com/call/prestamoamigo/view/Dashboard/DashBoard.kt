@@ -36,7 +36,7 @@ Int, prestamosTotalesDelCliente: Int
             Card (
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp)
+                    .height(170.dp)
 
                     ){
 
