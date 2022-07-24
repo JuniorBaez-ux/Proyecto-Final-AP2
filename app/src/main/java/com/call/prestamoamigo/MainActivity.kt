@@ -132,7 +132,6 @@ fun MyApp() {
     }
 }
 
-
 @Preview
 @Composable
 fun DefaultPreview() {
