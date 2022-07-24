@@ -16,6 +16,7 @@ import androidx.navigation.NavHostController
 @Composable
 fun DashBoard (navHostController: NavHostController,personaIdentification: Int, prestamosTotalesDelCliente: Int
 , nombrePersona: String,  telefonoPersona: String,  correoPersona: String,  direccionPersona: String){
+
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
     Scaffold(
