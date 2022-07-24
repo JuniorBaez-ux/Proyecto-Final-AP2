@@ -73,6 +73,7 @@ fun MyApp() {
                 type = NavType.IntType
             }
             )){
+
             val personaIdentification = it.arguments?.getInt("id").toString()
             val prestamosTotalesDelCliente = it.arguments?.getInt("prestamosTotales").toString()
             val nombrePersona = it.arguments?.getString("nombre").toString()
