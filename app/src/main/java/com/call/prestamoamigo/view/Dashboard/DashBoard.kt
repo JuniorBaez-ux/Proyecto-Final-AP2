@@ -13,14 +13,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
+
 @Composable
-fun DashBoard (navHostController: NavHostController,personaIdentification: Int, prestamosTotalesDelCliente: Int
+fun DashBoard (navHostController: NavHostController,personaIdentification:
+Int, prestamosTotalesDelCliente: Int
 , nombrePersona: String,  telefonoPersona: String,  correoPersona: String,  direccionPersona: String){
+
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text = "Dashboard") })
+            TopAppBar(title = { Text(text =  "Dashboard") })
         },
 
         scaffoldState = ScaffoldState
@@ -33,7 +36,7 @@ fun DashBoard (navHostController: NavHostController,personaIdentification: Int, 
             Card (
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(120.dp)
 
                     ){
 
