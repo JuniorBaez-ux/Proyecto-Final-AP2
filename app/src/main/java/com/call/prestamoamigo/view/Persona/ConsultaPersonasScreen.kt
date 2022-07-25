@@ -138,7 +138,7 @@ fun RowPersonas(navHostController: NavHostController, persona:Persona, id:Int, n
                     //Fecha
                     Text(
                         modifier = Modifier.padding(vertical = 5.dp),
-                        text = "Aqui deberia ir la fecha",
+                        text = "Junior arregla esto",
                         style = MaterialTheme.typography.body2,
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold
