@@ -52,8 +52,7 @@ fun ConsultaPrestamoScreen(
         },
         scaffoldState = ScaffoldState
 
-    ) {
-        it
+    ) {it
 
         Column(
             modifier = Modifier.padding(8.dp)
