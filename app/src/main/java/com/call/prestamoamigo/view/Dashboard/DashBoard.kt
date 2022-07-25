@@ -18,26 +18,29 @@ import androidx.navigation.NavHostController
 @Composable
 fun DashBoard (navHostController: NavHostController,personaIdentification:
 Int, prestamosTotalesDelCliente: Int
-, nombrePersona: String,  telefonoPersona: String,  correoPersona: String,  direccionPersona: String){
+, nombrePersona: String,  telefonoPersona: String,  correoPersona: String,  direccionPersona: String) {
 
     val ScaffoldState = rememberScaffoldState()
     val context = LocalContext.current
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text =  "Dashboard") })
+            TopAppBar(title = { Text(text = "Dashboard") })
         },
 
         scaffoldState = ScaffoldState
-    ) {it
+    ) {
+        it
         Column(
 
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp)) {
-            Card(modifier = Modifier
-                .fillMaxWidth()
-                .height(120.dp).padding(vertical = 5.dp)
-                , backgroundColor = MaterialTheme.colors.primary
+                .padding(8.dp)
+        ) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(150.dp).padding(vertical = 5.dp),
+                backgroundColor = MaterialTheme.colors.primary
             ) {
                 Column(
                     modifier = Modifier
@@ -68,35 +71,42 @@ Int, prestamosTotalesDelCliente: Int
                             fontWeight = FontWeight.Bold,
                         )
 
-                        Text(
-                            modifier = Modifier.padding(vertical = 5.dp),
-                            text = "$correoPersona",
-                            style = MaterialTheme.typography.body1,
-                            fontFamily = FontFamily.Monospace,
-                            fontWeight = FontWeight.Bold,
-                        )
 
-                        Text(
-                            modifier = Modifier.padding(vertical = 5.dp),
-                            text = "$direccionPersona",
-                            style = MaterialTheme.typography.body2,
-                            fontFamily = FontFamily.Monospace,
-                            fontWeight = FontWeight.Bold,
-                        )
 
+                            Text(
+                                modifier = Modifier.padding(vertical = 5.dp),
+                                text = "$correoPersona",
+                                style = MaterialTheme.typography.body1,
+                                fontFamily = FontFamily.Monospace,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Text(
+                                modifier = Modifier.padding(vertical = 5.dp),
+                                text = "$direccionPersona",
+                                style = MaterialTheme.typography.body2,
+                                fontFamily = FontFamily.Monospace,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                        }
                     }
                 }
-            }
-            Button(onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
-                modifier = Modifier
-                .fillMaxWidth()) {
-               Text(text = "Prestamo")
-            }
-            Button(onClick = {navHostController.navigate("ConsultaPago/$personaIdentification")  },
-                modifier = Modifier
-                    .fillMaxWidth()) {
-                Text(text = "Pagar")
+
+                Button(
+                    onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(text = "Prestamo")
+                }
+                Button(
+                    onClick = { navHostController.navigate("ConsultaPago/$personaIdentification") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(text = "Pagar")
+                }
             }
         }
     }
-}
