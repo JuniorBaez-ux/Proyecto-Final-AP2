@@ -47,6 +47,7 @@ fun ConsultaPagoScreen(
         scaffoldState = ScaffoldState
     ) {it
 
+
         val listaPago = pagoViewModel.pagos.collectAsState(initial = emptyList())
 
         Column(
