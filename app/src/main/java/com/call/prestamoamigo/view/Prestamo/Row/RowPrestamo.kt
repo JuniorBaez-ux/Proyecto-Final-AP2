@@ -23,61 +23,71 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
 {
 
     Column(modifier = Modifier
-        .fillMaxWidth().padding(1.dp)
+        .fillMaxWidth().padding(16.dp)
         .background(color = Color(0xFF82D4BB)))
         {
         Card(modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp).padding(vertical = 5.dp)
+            .height(120.dp).padding(vertical = 5.dp)
+
             .clickable {
                 navHostController.navigate("RegistroPrestamo/$personaIdentification")
-            }){
-            Row(
+            }
+            , backgroundColor = MaterialTheme.colors.primary){
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(30.dp)
-                    .padding(8.dp),
-
+                    .fillMaxWidth().padding(5.dp),
+                verticalArrangement = Arrangement.SpaceEvenly
+            ){
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(color = Color(0xFF82D4BB))
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
-
-                Column(
-                    modifier = Modifier.fillMaxWidth().padding(2.dp)
-
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth().padding(),
-                        horizontalArrangement = Arrangement.SpaceBetween)
-                    {
                     Text(
 
                         modifier = Modifier.padding(vertical = 5.dp),
                         text = "${prestamo.concepto}",
                         style = MaterialTheme.typography.body1,
                         overflow = TextOverflow.Ellipsis,
-                        color = Color.Black,
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.Bold,
                         )
 
-                        Text("$${prestamo.monto}",
-                        style = MaterialTheme.typography.body1,
-                        overflow = TextOverflow.Ellipsis,
-                        color = Color.Black)
-                     }
-                    Row(
-                        modifier = Modifier.fillMaxWidth().padding(),
-                        horizontalArrangement = Arrangement.SpaceBetween,)
-                    {
-                        Text("${prestamo.fecha}",
-                            style = MaterialTheme.typography.body1,
+                    Text(
+                            modifier = Modifier.padding(vertical = 5.dp),
+                            text= "$${prestamo.monto}",
+                            style = MaterialTheme.typography.body2,
                             overflow = TextOverflow.Ellipsis,
-                            color = Color.Black)
+                            fontFamily = FontFamily.Monospace,
+                            fontWeight = FontWeight.Bold,
+                        )
+                     }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(color = Color(0xFF82D4BB))
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                )
+                    {
+                        Text(modifier = Modifier.padding(vertical = 5.dp),
+                            text= "${prestamo.fecha}",
+                            style = MaterialTheme.typography.body2,
+                            overflow = TextOverflow.Ellipsis,
+                            fontFamily = FontFamily.Monospace,
+                            fontWeight = FontWeight.Bold)
 
-                        Text("$ ${prestamo.activo}",
-                                style = MaterialTheme.typography.body1,
+                        Text(
+                            text = if(prestamo.activo == 0) "No pagado" else "Pagado",
+                                style = MaterialTheme.typography.body2,
                                 overflow = TextOverflow.Ellipsis,
-                                color = Color.Black)
+                            fontFamily = FontFamily.Monospace,
+                            fontWeight = FontWeight.Bold)
                     }
                 }
             }
         }
     }
-}
