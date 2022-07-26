@@ -3,11 +3,13 @@ package com.call.prestamoamigo.view.Dashboard
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.SaveAs
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -33,25 +35,26 @@ Int, prestamosTotalesDelCliente: Int
         Column(
 
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth().fillMaxHeight()
                 .padding(8.dp)
         ) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(150.dp).padding(vertical = 5.dp),
+                    .height(150.dp)
+                    .padding(vertical = 5.dp),
                 backgroundColor = MaterialTheme.colors.primary
             ) {
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth().padding(5.dp),
+                        .fillMaxWidth()
+                        .padding(12.dp),
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(color = Color(0xFF82D4BB))
-                            .padding(8.dp),
+                            .background(color = Color(0xFF82D4BB)),
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
 
@@ -70,52 +73,64 @@ Int, prestamosTotalesDelCliente: Int
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold,
                         )
+                    }
 
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(color = Color(0xFF82D4BB)),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                    ) {
+                        Text(
+                            modifier = Modifier.padding(vertical = 5.dp),
+                            text = "$correoPersona",
+                            style = MaterialTheme.typography.body1,
+                            fontFamily = FontFamily.Monospace,
+                            fontWeight = FontWeight.Bold,
+                        )
 
+                        Text(
+                            modifier = Modifier.padding(vertical = 5.dp),
+                            text = "$direccionPersona",
+                            style = MaterialTheme.typography.body2,
+                            fontFamily = FontFamily.Monospace,
+                            fontWeight = FontWeight.Bold,
+                        )
                     }
                 }
-                Row(
+            }
+
+
+            Column(
+                modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+                verticalArrangement = Arrangement.Bottom
+            ) {
+                OutlinedButton(
+                    onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(color = Color(0xFF82D4BB))
-                        .padding(8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                        .background(color = Color.Transparent),
+
+                    ) {
+                    Text(
+                        text = "Prestamo",
+                        color = Color.Black
+                    )
+                }
+                OutlinedButton(
+                    onClick = { navHostController.navigate("ConsultaPago/$personaIdentification") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(color = Color.Transparent)
                 ) {
                     Text(
-                        modifier = Modifier.padding(vertical = 5.dp),
-                        text = "$correoPersona",
-                        style = MaterialTheme.typography.body1,
-                        fontFamily = FontFamily.Monospace,
-                        fontWeight = FontWeight.Bold,
+                        text = "Pagar",
+                        color = Color.Black
                     )
-
-                    Text(
-                        modifier = Modifier.padding(vertical = 5.dp),
-                        text = "$direccionPersona",
-                        style = MaterialTheme.typography.body2,
-                        fontFamily = FontFamily.Monospace,
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
-
-
-
-
                 }
             }
-        Button(
-            onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            Text(text = "Prestamo")
-        }
-        Button(
-            onClick = { navHostController.navigate("ConsultaPago/$personaIdentification") },
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            Text(text = "Pagar")
+
+
         }
     }
 }

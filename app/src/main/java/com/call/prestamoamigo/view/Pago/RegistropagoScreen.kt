@@ -139,6 +139,7 @@ fun RegistroPagoScreen(
                             contentDescription = "",
                         )
                     },
+
                     trailingIcon = {
                         IconButton(
                             onClick = { date.show() }
