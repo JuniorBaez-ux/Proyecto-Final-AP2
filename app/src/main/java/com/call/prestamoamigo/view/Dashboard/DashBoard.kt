@@ -100,21 +100,22 @@ Int, prestamosTotalesDelCliente: Int
 
 
 
-                Button(
-                    onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Text(text = "Prestamo")
-                }
-                Button(
-                    onClick = { navHostController.navigate("ConsultaPago/$personaIdentification") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Text(text = "Pagar")
+
                 }
             }
+        Button(
+            onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(text = "Prestamo")
+        }
+        Button(
+            onClick = { navHostController.navigate("ConsultaPago/$personaIdentification") },
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(text = "Pagar")
         }
     }
 }
