@@ -72,26 +72,33 @@ Int, prestamosTotalesDelCliente: Int
                         )
 
 
-
-                            Text(
-                                modifier = Modifier.padding(vertical = 5.dp),
-                                text = "$correoPersona",
-                                style = MaterialTheme.typography.body1,
-                                fontFamily = FontFamily.Monospace,
-                                fontWeight = FontWeight.Bold,
-                            )
-
-                            Text(
-                                modifier = Modifier.padding(vertical = 5.dp),
-                                text = "$direccionPersona",
-                                style = MaterialTheme.typography.body2,
-                                fontFamily = FontFamily.Monospace,
-                                fontWeight = FontWeight.Bold,
-                            )
-
-                        }
                     }
                 }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(color = Color(0xFF82D4BB))
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        modifier = Modifier.padding(vertical = 5.dp),
+                        text = "$correoPersona",
+                        style = MaterialTheme.typography.body1,
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.Bold,
+                    )
+
+                    Text(
+                        modifier = Modifier.padding(vertical = 5.dp),
+                        text = "$direccionPersona",
+                        style = MaterialTheme.typography.body2,
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+
+
 
                 Button(
                     onClick = { navHostController.navigate("ConsultaPrestamo/$personaIdentification") },
@@ -110,3 +117,4 @@ Int, prestamosTotalesDelCliente: Int
             }
         }
     }
+}
