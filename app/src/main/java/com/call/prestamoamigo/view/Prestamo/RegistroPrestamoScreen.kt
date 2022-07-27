@@ -28,7 +28,6 @@ import androidx.navigation.NavHostController
 import com.call.prestamoamigo.view.Prestamo.PrestamoViewModel
 import java.util.*
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun RegistroPrestamoSceen(navHostController: NavHostController,
                           PrestamoViewModel: PrestamoViewModel = hiltViewModel(),
