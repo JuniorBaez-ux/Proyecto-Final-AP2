@@ -83,11 +83,17 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                         Icon(
                         imageVector = Icons.Default.CalendarToday,
                         contentDescription = null
-                    )
-                        IconButton(onClick = { date.show() }) {
-
-                        }
+                    )},
+                trailingIcon = {
+                    IconButton(
+                        onClick = { date.show() }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.CalendarToday,
+                            contentDescription = null,
+                        )
                     }
+                }
 
                 )
 
@@ -134,13 +140,22 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                         },
                         readOnly = true,
                         leadingIcon = {
-                            IconButton(onClick = { date2.show() }) {
                                 Icon(
                                     imageVector = Icons.Default.CalendarToday,
                                     contentDescription = null
+                                ) },
+
+                        trailingIcon = {
+                            IconButton(
+                                onClick = { date2.show()  }
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.CalendarToday,
+                                    contentDescription = "",
                                 )
                             }
                         }
+
                     )
             OutlinedButton(
                 onClick = {
