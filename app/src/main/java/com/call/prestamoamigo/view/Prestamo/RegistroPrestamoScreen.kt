@@ -25,6 +25,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.call.prestamoamigo.ui.theme.black
 import com.call.prestamoamigo.view.Prestamo.PrestamoViewModel
 import java.util.*
 
@@ -175,8 +176,9 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                     }else{
                         Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show() }
         },
-        modifier = Modifier.align(alignment = Alignment.CenterHorizontally).padding(6.dp)
+        modifier = Modifier.align(alignment = Alignment.CenterHorizontally).padding(vertical = 25.dp)
             ) {
+                Icon(imageVector = Icons.Default.SaveAs, contentDescription = "Guardar", tint = black, modifier = Modifier.padding(horizontal = 5.dp))
                 Text("Guardar ", color = Color.Black)
             }
         }
