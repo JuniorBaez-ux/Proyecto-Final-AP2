@@ -23,17 +23,17 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
 {
 
     Column(modifier = Modifier
-        .fillMaxWidth().padding(16.dp)
-        .background(color = Color(0xFF82D4BB)))
-        {
+        .fillMaxWidth()
+        .clickable {
+            navHostController.navigate("RegistroPrestamo/$personaIdentification") }
+        .padding(16.dp)
+        ) {
+
         Card(modifier = Modifier
             .fillMaxWidth()
             .height(120.dp).padding(vertical = 5.dp)
-
-            .clickable {
-                navHostController.navigate("RegistroPrestamo/$personaIdentification")
-            }
             , backgroundColor = MaterialTheme.colors.primary){
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth().padding(5.dp),
@@ -51,7 +51,6 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
                         modifier = Modifier.padding(vertical = 5.dp),
                         text = "${prestamo.concepto}",
                         style = MaterialTheme.typography.body1,
-                        overflow = TextOverflow.Ellipsis,
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         )
@@ -60,7 +59,6 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
                             modifier = Modifier.padding(vertical = 5.dp),
                             text= "$${prestamo.monto}",
                             style = MaterialTheme.typography.body2,
-                            overflow = TextOverflow.Ellipsis,
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold,
                         )
@@ -76,14 +74,13 @@ fun RowPrestamo (prestamo: Prestamo, navHostController: NavHostController,
                         Text(modifier = Modifier.padding(vertical = 5.dp),
                             text= "${prestamo.fecha}",
                             style = MaterialTheme.typography.body2,
-                            overflow = TextOverflow.Ellipsis,
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold)
 
                         Text(
                             text = if(prestamo.activo == 0) "No pagado" else "Pagado",
+                            modifier = Modifier.padding(vertical = 5.dp),
                                 style = MaterialTheme.typography.body2,
-                                overflow = TextOverflow.Ellipsis,
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold)
                     }
