@@ -45,11 +45,11 @@ interface PersonasDao {
 
     @Query(
         """
-        SELECT * FROM Pagos 
+        SELECT fecha FROM Pagos 
         WHERE personaId =:personaId
         ORDER BY pagoId
         Desc LIMIT 1
     """
     )
-    suspend fun GetFechas(personaId:Int?): Pago
+    fun GetFechas(personaId:Int): String?
 }

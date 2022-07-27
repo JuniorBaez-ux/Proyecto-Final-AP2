@@ -20,5 +20,5 @@ class PersonasRepository @Inject constructor(
 
     suspend fun GetMontoFromPrestamos(personaId: Int?): Double = personasDao.GetMontoFromPrestamos(personaId)
 
-    suspend fun GetFechas(personaId: Int?): Pago = personasDao.GetFechas(personaId)
+    fun GetFechas(personaId: Int): String? = personasDao.GetFechas(personaId)
 }

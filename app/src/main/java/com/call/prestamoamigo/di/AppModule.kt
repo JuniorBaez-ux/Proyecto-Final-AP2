@@ -26,9 +26,10 @@ object  AppModule {
         return Room.databaseBuilder(
             context,
             PrestamosAmigosDb::class.java,
-            DATABASE_NAME       )
+            DATABASE_NAME       ).allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
+
     }
 
 

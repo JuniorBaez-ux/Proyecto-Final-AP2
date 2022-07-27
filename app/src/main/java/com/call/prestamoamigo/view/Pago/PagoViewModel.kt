@@ -48,6 +48,7 @@ class PagoViewModel @Inject constructor(
             )
             pagosRepository.pagarPrestamo(selectId)
             pagosRepository.disminuirPrestamo(personaIdentification)
+            pagosRepository.aumentarPago(personaIdentification)
         }
     }
 }

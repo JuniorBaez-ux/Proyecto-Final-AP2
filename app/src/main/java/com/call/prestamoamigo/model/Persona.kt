@@ -11,5 +11,6 @@ data class Persona(
     val telefono: String,
     val correo: String,
     val direccion: String,
-    val prestamosTotales: Int
+    val prestamosTotales: Int,
+    val pagosTotales: Int
 )

@@ -21,6 +21,7 @@ class PagosRepository @Inject constructor(
     fun listaPrestamos(personaId: Int): Flow<List<Prestamo>> = pagosDao.listaPrestamos(personaId)
 
     suspend fun pagarPrestamo(prestamoId: Int) = pagosDao.pagarPrestamo(prestamoId)
+    suspend fun aumentarPago(personaId: Int) = pagosDao.aumentarPago(personaId)
 
     suspend fun disminuirPrestamo(persona:Int) = pagosDao.disminuirPrestamo(persona)
 }

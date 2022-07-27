@@ -47,6 +47,16 @@ fun ConsultaPersonasScreen(
         }
     }
 
+    fun getFechasFromDB(personaId: Int?, pagosTotales: Int?) : String {
+        var fechadePersona by mutableStateOf("No hay pagos")
+        return if (personaId != 0 && pagosTotales != 0){
+            fechadePersona = personaViewModel.GetFechas(personaId, pagosTotales)
+            fechadePersona
+        }else{
+            "No hay pagos"
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -71,7 +81,8 @@ fun ConsultaPersonasScreen(
                     persona -> RowPersonas(navHostController =  navHostController, persona = persona, persona.personaId,
                     persona.nombre, persona.telefono, persona.correo, persona.direccion, persona.prestamosTotales,
                     montoPrestamo = getMontoFromPrestamos(persona.personaId, persona.prestamosTotales),
-                    fechaUltimoPrestamo = personaViewModel.GetFechas(persona.personaId))
+                    fechaUltimoPrestamo = getFechasFromDB(persona.personaId, persona.pagosTotales)
+                )
                 }
             }
         }
@@ -142,7 +153,7 @@ fun RowPersonas(navHostController: NavHostController, persona:Persona, id:Int, n
 
                     Text(
                         modifier = Modifier.padding(vertical = 5.dp),
-                        text = "$fechaUltimoPrestamo",
+                        text =  "$fechaUltimoPrestamo",
                         style = MaterialTheme.typography.body2,
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold
