@@ -1,6 +1,7 @@
 package com.call.prestamoamigo.data.repository
 
 import com.call.prestamoamigo.data.PersonasDao
+import com.call.prestamoamigo.model.Pago
 import com.call.prestamoamigo.model.Persona
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -19,6 +20,5 @@ class PersonasRepository @Inject constructor(
 
     suspend fun GetMontoFromPrestamos(personaId: Int?): Double = personasDao.GetMontoFromPrestamos(personaId)
 
-    suspend fun GetFechas(prestamoId: Int?): String = personasDao.GetFechas(prestamoId)
-
+    suspend fun GetFechas(personaId: Int?): Pago = personasDao.GetFechas(personaId)
 }

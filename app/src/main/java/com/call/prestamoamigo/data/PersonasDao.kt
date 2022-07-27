@@ -1,6 +1,7 @@
 package com.call.prestamoamigo.data
 
 import androidx.room.*
+import com.call.prestamoamigo.model.Pago
 import com.call.prestamoamigo.model.Persona
 import kotlinx.coroutines.flow.Flow
 
@@ -44,15 +45,11 @@ interface PersonasDao {
 
     @Query(
         """
-        SELECT fecha FROM Pagos 
-        WHERE prestamoId =:prestamoId
-        ORDER BY fecha
-        DESC LIMIT 1
+        SELECT * FROM Pagos 
+        WHERE personaId =:personaId
+        ORDER BY pagoId
+        Desc LIMIT 1
     """
     )
-    suspend fun GetFechas(prestamoId: Int?): String
-
-
-    //SELECT fecha FROM Pagos ORDER BY fecha DESC LIMIT 1;
-    //SELECT fecha FROM Pagos WHERE
+    suspend fun GetFechas(personaId:Int?): Pago
 }

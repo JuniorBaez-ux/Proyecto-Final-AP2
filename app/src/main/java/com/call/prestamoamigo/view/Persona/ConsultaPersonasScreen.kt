@@ -21,9 +21,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.call.prestamoamigo.model.Pago
 import com.call.prestamoamigo.model.Persona
 import com.call.prestamoamigo.ui.theme.backgroundColor
 import com.call.prestamoamigo.ui.theme.primaryColor
+import kotlinx.coroutines.flow.Flow
 
 
 @Composable
@@ -33,6 +35,8 @@ fun ConsultaPersonasScreen(
 ){
     val ScaffoldState = rememberScaffoldState()
 
+    //Esta funcion se encarga de obtener el balance total de la base de datos
+    //Siempre y cuando cumpla con los requisitos establecidos
     fun getMontoFromPrestamos(personaId: Int?, prestamosTotales: Int?) : Double{
         var montoDelPrestamo by mutableStateOf(0.0)
         if (prestamosTotales!= 0){
@@ -66,8 +70,8 @@ fun ConsultaPersonasScreen(
                 items(listapersonas.value){
                     persona -> RowPersonas(navHostController =  navHostController, persona = persona, persona.personaId,
                     persona.nombre, persona.telefono, persona.correo, persona.direccion, persona.prestamosTotales,
-                    montoPrestamo = getMontoFromPrestamos(persona.personaId, persona.prestamosTotales)
-                    /*monto = persona.monto, concepto = persona.concepto*/)
+                    montoPrestamo = getMontoFromPrestamos(persona.personaId, persona.prestamosTotales),
+                    fechaUltimoPrestamo = personaViewModel.GetFechas(persona.personaId))
                 }
             }
         }
@@ -77,7 +81,8 @@ fun ConsultaPersonasScreen(
 
 @Composable
 fun RowPersonas(navHostController: NavHostController, persona:Persona, id:Int, nombre:String, telefono:String,
-                correo:String, direccion:String, prestamosTotales:Int, montoPrestamo:Double, /*fechaUltimoPrestamo:String,*/
+                correo:String, direccion:String, prestamosTotales:Int, montoPrestamo:Double,
+                fechaUltimoPrestamo:String
 ) {
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -135,10 +140,9 @@ fun RowPersonas(navHostController: NavHostController, persona:Persona, id:Int, n
                         fontWeight = FontWeight.Bold
                     )
 
-                    //Fecha
                     Text(
                         modifier = Modifier.padding(vertical = 5.dp),
-                        text = "Aqui deberia ir la fecha",
+                        text = "$fechaUltimoPrestamo",
                         style = MaterialTheme.typography.body2,
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold
