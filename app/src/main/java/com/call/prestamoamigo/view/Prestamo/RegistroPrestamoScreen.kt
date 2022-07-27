@@ -81,7 +81,7 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                     readOnly = true,
                     leadingIcon = {
                         Icon(
-                        imageVector = Icons.Default.CalendarToday,
+                        imageVector = Icons.Default.EditCalendar,
                         contentDescription = null
                     )},
                 trailingIcon = {
@@ -141,7 +141,7 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                         readOnly = true,
                         leadingIcon = {
                                 Icon(
-                                    imageVector = Icons.Default.CalendarToday,
+                                    imageVector = Icons.Default.EditCalendar,
                                     contentDescription = null
                                 ) },
 
