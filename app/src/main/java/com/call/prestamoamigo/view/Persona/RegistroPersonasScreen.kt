@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.call.prestamoamigo.ui.theme.black
 import com.call.prestamoamigo.view.Persona.PersonaViewModel
 
 @Composable
@@ -109,8 +110,9 @@ fun RegistroPersonasScreen(
                     personaViewModel.Guardar()
                     navHostController.navigate("ConsultaPersonas")
                 }
-            }, modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
+            }, modifier = Modifier.align(alignment = Alignment.CenterHorizontally).padding(vertical = 25.dp)
         ) {
+            Icon(imageVector = Icons.Default.SaveAs, contentDescription = "Guardar", tint = black, modifier = Modifier.padding(horizontal = 5.dp))
             Text(text = "Guardar", color = Color.Black)
         }
     }
