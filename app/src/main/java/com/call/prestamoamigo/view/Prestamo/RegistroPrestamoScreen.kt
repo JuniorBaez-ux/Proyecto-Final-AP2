@@ -163,10 +163,10 @@ fun RegistroPrestamoSceen(navHostController: NavHostController,
                          validateCadena(PrestamoViewModel.vence) && PrestamoViewModel.monto.length> 2
                         ) {
                             if(valida(PrestamoViewModel.monto)){
-                                Toast.makeText(context, "No sabes escribir", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Ingrese informacion Valida", Toast.LENGTH_SHORT).show()
                             }
                             else{
-                                Toast.makeText(context, "Usted Sabe escribir", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Guardado Exitoso", Toast.LENGTH_SHORT).show()
                                 PrestamoViewModel.personaIdentification = personaIdentification;
                                 PrestamoViewModel.Guardar()
 
