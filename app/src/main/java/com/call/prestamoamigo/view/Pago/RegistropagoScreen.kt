@@ -22,6 +22,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,6 +32,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.call.prestamoamigo.MyApp
 import com.call.prestamoamigo.ui.theme.PrestamoAmigoTheme
+import com.call.prestamoamigo.ui.theme.black
 import java.time.format.DateTimeFormatter
 import java.util.*
 
@@ -72,48 +74,7 @@ fun RegistroPagoScreen(
         topBar = {
             TopAppBar(title = { Text(text = "Registro de Pagos") })
         },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
 
-                    fechaValidar = pagoViewModel.fecha.isBlank()
-                    prestamoValidar = pagoViewModel.selectedPrestamo.isBlank()
-                    conceptoValidar = pagoViewModel.concepto.isBlank()
-                    montoValidar = pagoViewModel.selectmonto.toString().isBlank()
-                    prestamoIdValidar = pagoViewModel.selectId.toString().isBlank()
-
-
-                    if(pagoViewModel.fecha.toString() == ""){
-                        Toast.makeText(context, "Fecha no debe estar vacio", Toast.LENGTH_SHORT).show()
-                    }
-
-                    if(pagoViewModel.selectedPrestamo.toString() == ""){
-                        Toast.makeText(context, "Debe selecionar un prestamo", Toast.LENGTH_SHORT).show()
-                    }
-
-                    if(pagoViewModel.concepto.toString() == ""){
-                        Toast.makeText(context, "Concepto no debe estar vacio", Toast.LENGTH_SHORT).show()
-                    }
-
-                    if(pagoViewModel.selectmonto.toString() == ""){
-                        Toast.makeText(context, "Monto no debe estar vacio", Toast.LENGTH_SHORT).show()
-                    }
-
-                    if(!fechaValidar && !prestamoValidar && !conceptoValidar && !montoValidar && !prestamoIdValidar){
-                        if(pagoViewModel.selectmonto.toFloat() > 0){
-                            pagoViewModel.Guardar()
-                            Toast.makeText(context, "Guardado", Toast.LENGTH_SHORT).show()
-                            navHostController.navigate("consultaPago/$personaIdentification")
-                        }else{
-                            Toast.makeText(context, "El Monto debe de ser mayor a 0", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                },
-                backgroundColor = MaterialTheme.colors.secondary
-            ) {
-                Icon(imageVector = Icons.Default.SaveAs, contentDescription = "Guardar")
-            }
-        },
         scaffoldState = ScaffoldState
     ) {
         it
@@ -230,6 +191,51 @@ fun RegistroPagoScreen(
                         contentDescription = null)
                 }
             )
+            OutlinedButton(
+                    onClick = {
+                        fechaValidar = pagoViewModel.fecha.isBlank()
+                        prestamoValidar = pagoViewModel.selectedPrestamo.isBlank()
+                        conceptoValidar = pagoViewModel.concepto.isBlank()
+                        montoValidar = pagoViewModel.selectmonto.toString().isBlank()
+                        prestamoIdValidar = pagoViewModel.selectId.toString().isBlank()
+
+
+                        if(pagoViewModel.fecha.toString() == ""){
+                            Toast.makeText(context, "Fecha no debe estar vacio", Toast.LENGTH_SHORT).show()
+                        }
+
+                        if(pagoViewModel.selectedPrestamo.toString() == ""){
+                            Toast.makeText(context, "Debe selecionar un prestamo", Toast.LENGTH_SHORT).show()
+                        }
+
+                        if(pagoViewModel.concepto.toString() == ""){
+                            Toast.makeText(context, "Concepto no debe estar vacio", Toast.LENGTH_SHORT).show()
+                        }
+
+                        if(pagoViewModel.selectmonto.toString() == ""){
+                            Toast.makeText(context, "Monto no debe estar vacio", Toast.LENGTH_SHORT).show()
+                        }
+
+                        if(!fechaValidar && !prestamoValidar && !conceptoValidar && !montoValidar && !prestamoIdValidar){
+                            if(pagoViewModel.selectmonto.toFloat() > 0){
+                                pagoViewModel.Guardar()
+                                Toast.makeText(context, "Guardado", Toast.LENGTH_SHORT).show()
+                                navHostController.navigate("consultaPago/$personaIdentification")
+                            }else{
+                                Toast.makeText(context, "El Monto debe de ser mayor a 0", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                    },
+                    modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
+                        .padding(vertical = 25.dp)
+
+            ) {
+                Icon(imageVector = Icons.Default.SaveAs, contentDescription = "Guardar", tint = black, modifier = Modifier.padding(horizontal = 5.dp))
+
+            Text(
+                text = "Guardar", color = Color.Black)
+            }
         }
     }
 }
